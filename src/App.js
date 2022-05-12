@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect } from "react";
+import "./App.scss";
+import Form from "./containers/Form/Form";
 function App() {
+  useEffect(() => {
+    fetch("http://localhost:8080/bmi", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        weight: 80,
+        height: 1.85,
+        age: 25,
+        activityFactor: "n",
+        gender: "m",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <main>
+          <Form />
+        </main>
+      </div>
     </div>
   );
 }
