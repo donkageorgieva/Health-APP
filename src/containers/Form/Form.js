@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import InputGroup from "../../components/InputGroup/InputGroup";
+import { fetchBMI } from "../../redux/reducers/health-status-reducer";
 const Form = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     "age": null,
     "weight": null,
@@ -14,6 +17,12 @@ const Form = () => {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      fetchBMI({
+        weight: parseFloat(formData.weight),
+        height: parseFloat(formData.height) / 100,
+      })
+    );
     // const clearedFormData = {};
     // for (const key in formData) {
     //   clearedFormData[key] = null;

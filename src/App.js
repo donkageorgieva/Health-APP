@@ -1,13 +1,13 @@
-import Axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchBMI } from "./redux/reducers/health-status-reducer";
 import "./App.scss";
 import Form from "./containers/Form/Form";
+import InfoBox from "./components/InfoBox/InfoBox";
 
 function App() {
   const dispatch = useDispatch();
-
+  const bmi = useSelector((state) => state.health.bmi.value);
   useEffect(() => {
     dispatch(
       fetchBMI({
@@ -18,23 +18,13 @@ function App() {
         gender: "m",
       })
     );
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await Axios.post("http://localhost:8080/bmi");
-    //     if (response.data) {
-    //       console.log(response.data);
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // fetchData();
-  }, []);
+  }, [dispatch]);
   return (
     <div className="App">
       <div className="container">
         <main>
           <Form />
+          {bmi && <InfoBox info={bmi} />}
         </main>
       </div>
     </div>

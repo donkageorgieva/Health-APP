@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 const initialState = {
+  random: "Hello",
   bmi: {
     value: null,
     bmiRange: "",
@@ -18,9 +19,11 @@ const initialState = {
 };
 
 export const fetchBMI = createAsyncThunk("health/fetchBMI", async (stats) => {
+  console.log(stats, "STATS");
   return axios
     .post("http://localhost:8080/bmi", stats)
-    .then((response) => response.data);
+    .then((response) => response.data)
+    .catch((err) => err);
 });
 const healthSlice = createSlice({
   name: "health",
@@ -59,12 +62,11 @@ const healthSlice = createSlice({
   extraReducers: {
     [fetchBMI.pending]: (state, aciton) => {
       state.bmi.isLoading = true;
-      console.log(aciton.payload, "pending");
     },
     [fetchBMI.fulfilled]: (state, aciton) => {
       state.bmi.isLoading = false;
       state.bmi.error = false;
-      console.log(aciton.payload, "fufilled");
+      console.log(aciton.payload);
     },
     [fetchBMI.rejected]: (state, aciton) => {
       state.bmi.error = true;
@@ -75,4 +77,4 @@ const healthSlice = createSlice({
 });
 
 export const healthActions = healthSlice.actions;
-export default healthSlice.reducer;
+export const healthReducer = healthSlice.reducer;

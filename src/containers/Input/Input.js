@@ -4,7 +4,7 @@ const Input = (props) => {
   const [inputValue, setInputValue] = useState("");
   const handleValueChange = (val) => {
     setInputValue(val);
-    props.valueChanged(inputValue);
+    props.valueChanged(val);
   };
   return (
     <input

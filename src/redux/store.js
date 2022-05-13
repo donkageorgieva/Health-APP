@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import healthStatusReducer from "./reducers/health-status-reducer";
+import { healthReducer } from "./reducers/health-status-reducer";
 const store = configureStore({
   reducer: {
-    health: healthStatusReducer,
+    health: healthReducer,
   },
 });
 
