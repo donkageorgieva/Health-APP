@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 const Input = (props) => {
-  const [inputValue, setInputValue] = useState("");
   const handleValueChange = (val) => {
-    setInputValue(val);
     props.valueChanged(val);
   };
   return (
@@ -12,7 +10,7 @@ const Input = (props) => {
       id={props.id}
       aria-describedby={props.describe}
       placeholder={props.placeholder}
-      value={inputValue}
+      value={props.value}
       onChange={(e) => {
         handleValueChange(e.target.value);
       }}

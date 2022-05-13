@@ -5,9 +5,10 @@ import { fetchBMI } from "../../redux/reducers/health-status-reducer";
 const Form = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    "age": null,
-    "weight": null,
-    "height": null,
+    "age": "",
+    "weight": "",
+    "height": "",
+    resetForm: false,
   });
   const handleDataChange = (data) => {
     setFormData({
@@ -23,11 +24,11 @@ const Form = () => {
         height: parseFloat(formData.height) / 100,
       })
     );
-    // const clearedFormData = {};
-    // for (const key in formData) {
-    //   clearedFormData[key] = null;
-    // }
-    // setFormData(clearedFormData);
+    const clearedFormData = {};
+    for (const key in formData) {
+      clearedFormData[key] = "";
+    }
+    setFormData(clearedFormData);
   };
   return (
     <form onSubmit={handleFormSubmit}>
@@ -40,6 +41,7 @@ const Form = () => {
             onChange: (value) => {
               handleDataChange({ value, dataType: "age" });
             },
+            value: formData["age"],
           },
           {
             id: 2,
@@ -48,6 +50,7 @@ const Form = () => {
             onChange: (value) => {
               handleDataChange({ value, dataType: "weight" });
             },
+            value: formData["weight"],
           },
           {
             id: 3,
@@ -56,6 +59,7 @@ const Form = () => {
             onChange: (value) => {
               handleDataChange({ value, dataType: "height" });
             },
+            value: formData["height"],
           },
         ]}
       />

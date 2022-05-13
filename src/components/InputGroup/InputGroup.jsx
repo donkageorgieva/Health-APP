@@ -12,6 +12,7 @@ const InputGroup = (props) => {
           aria-describedby={data.describe}
           placeholder={data.placeholder}
           describe="Age"
+          value={data.value}
         />
       </div>
     );
