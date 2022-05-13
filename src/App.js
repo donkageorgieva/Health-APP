@@ -24,7 +24,7 @@ function App() {
       <div className="container">
         <main>
           <Form />
-          {bmi && <InfoBox info={bmi} />}
+          {bmi ? <InfoBox info={bmi} /> : <h1>Loading .. </h1>}
         </main>
       </div>
     </div>

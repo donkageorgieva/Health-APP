@@ -66,6 +66,8 @@ const healthSlice = createSlice({
     [fetchBMI.fulfilled]: (state, aciton) => {
       state.bmi.isLoading = false;
       state.bmi.error = false;
+      state.bmi.bmiRange = aciton.payload.bmiRange;
+      state.bmi.value = aciton.payload.bmi.toFixed(2);
       console.log(aciton.payload);
     },
     [fetchBMI.rejected]: (state, aciton) => {
