@@ -1,23 +1,34 @@
+import Axios from "axios";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchBMI } from "./redux/reducers/health-status-reducer";
 import "./App.scss";
 import Form from "./containers/Form/Form";
+
 function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetch("http://localhost:8080/bmi", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        weight: 80,
+    dispatch(
+      fetchBMI({
+        weight: 60,
         height: 1.85,
         age: 25,
         activityFactor: "n",
         gender: "m",
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+      })
+    );
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await Axios.post("http://localhost:8080/bmi");
+    //     if (response.data) {
+    //       console.log(response.data);
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // fetchData();
   }, []);
   return (
     <div className="App">
