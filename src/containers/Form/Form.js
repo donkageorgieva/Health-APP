@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import InputGroup from "../../components/InputGroup/InputGroup";
-import { fetchBMI } from "../../redux/reducers/health-status-reducer";
+import { fetchBMI } from "../../redux/reducers/thunks/fetchBMI";
 const Form = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ const Form = () => {
     dispatch(
       fetchBMI({
         weight: parseFloat(formData.weight),
-        height: parseFloat(formData.height) / 100,
+        height: parseFloat(formData.height),
       })
     );
     const clearedFormData = {};
@@ -54,7 +54,7 @@ const Form = () => {
           },
           {
             id: 3,
-            label: "Height in Meters",
+            label: "Height (CM) ",
             placeholder: "Height",
             onChange: (value) => {
               handleDataChange({ value, dataType: "height" });

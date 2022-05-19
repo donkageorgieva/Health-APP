@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchBMI } from "./thunks/fetchBMI";
 const initialState = {
   random: "Hello",
   bmi: {
@@ -18,13 +17,6 @@ const initialState = {
   recipes: [],
 };
 
-export const fetchBMI = createAsyncThunk("health/fetchBMI", async (stats) => {
-  console.log(stats, "STATS");
-  return axios
-    .post("http://localhost:8080/bmi", stats)
-    .then((response) => response.data)
-    .catch((err) => err);
-});
 const healthSlice = createSlice({
   name: "health",
   initialState,

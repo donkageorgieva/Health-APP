@@ -1,5 +1,10 @@
 const InfoBox = (props) => {
-  return <h1>{props.info}</h1>;
+  return (
+    <div className={`alert ${props.class}`} role="alert">
+      <h4 class="alert-heading">{props.heading}</h4>
+      <p>{props.info}</p>
+    </div>
+  );
 };
 
 export default InfoBox;
