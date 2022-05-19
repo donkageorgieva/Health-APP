@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import "./App.scss";
+import { fetchBMI } from "./redux/reducers/thunks/fetchBMI";
 import Form from "./containers/Form/Form";
 import InfoBox from "./components/InfoBox/InfoBox";
+import Header from "./components/Header/Header";
+import "./App.scss";
 
 function App() {
   const bmi = useSelector((state) => state.health.bmi);
@@ -16,14 +18,21 @@ function App() {
   }, [bmi]);
   return (
     <div className="App">
+      <Header
+        navLinks={[
+          { name: "BMI Calculator", to: "/bmi" },
+          { name: "Calorie Calculator", to: "/calories" },
+          { name: "Measurments Calculator", to: "/convert" },
+        ]}
+      />
       <div className="container">
         <main>
-          <Form />
+          <Form fetchFnc={fetchBMI} />
           {bmi ? (
             <InfoBox
-              info={`Your BMI is ${bmi.value}`}
-              heading={bmi.bmiRange}
-              class={infoClass}
+              info={`Your BMI range is ${bmi.bmiRange}`}
+              heading={bmi.value}
+              classes={infoClass}
             />
           ) : (
             <h1>Loading .. </h1>

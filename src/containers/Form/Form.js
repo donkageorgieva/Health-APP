@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import InputGroup from "../../components/InputGroup/InputGroup";
-import { fetchBMI } from "../../redux/reducers/thunks/fetchBMI";
-const Form = () => {
+const Form = (props) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     "age": "",
@@ -19,7 +18,7 @@ const Form = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      fetchBMI({
+      props.fetchFnc({
         weight: parseFloat(formData.weight),
         height: parseFloat(formData.height),
       })

@@ -1,7 +1,7 @@
 const InfoBox = (props) => {
   return (
-    <div className={`alert ${props.class}`} role="alert">
-      <h4 class="alert-heading">{props.heading}</h4>
+    <div className={`alert ${props.classes}`} role="alert">
+      <h4 className="alert-heading">{props.heading}</h4>
       <p>{props.info}</p>
     </div>
   );
