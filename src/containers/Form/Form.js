@@ -1,66 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import InputGroup from "../../components/InputGroup/InputGroup";
 const Form = (props) => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    "age": "",
-    "weight": "",
-    "height": "",
-    resetForm: false,
-  });
-  const handleDataChange = (data) => {
-    setFormData({
-      ...formData,
-      [data.dataType]: data.value,
-    });
+  const [formData, setFormData] = useState(props.formData);
+
+  const handleDataChange = (value, name) => {
+    const dataIndex = formData.findIndex((data) => data.name === name);
+    console.log(formData[dataIndex]);
+    const updatedData = [...formData];
+    updatedData[dataIndex].value = value;
+    setFormData(updatedData);
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      props.fetchFnc({
-        weight: parseFloat(formData.weight),
-        height: parseFloat(formData.height),
-      })
-    );
-    const clearedFormData = {};
-    for (const key in formData) {
-      clearedFormData[key] = "";
-    }
-    setFormData(clearedFormData);
+    // dispatch(
+    //   props.fetchFnc({
+    //     weight: parseFloat(formData.weight),
+    //     height: parseFloat(formData.height),
+    //   })
+    // );
+    // const clearedFormData = [];
+    // for (const key in formData) {
+    //   clearedFormData[key] = "";
+    // }
+    setFormData([]);
   };
+  useEffect(() => {
+    const field = formData.find((field) => {
+      return field.name === "age";
+    });
+    console.log(field.value);
+  }, []);
   return (
     <form onSubmit={handleFormSubmit}>
       <InputGroup
-        inputData={[
-          {
-            id: 1,
-            label: "Age",
-            placeholder: "Age",
+        inputData={props.formData.map((data) => {
+          return {
+            ...data,
+            value: formData.find((field) => {
+              return field.name === data.name;
+            }).value,
             onChange: (value) => {
-              handleDataChange({ value, dataType: "age" });
+              handleDataChange(value, data.name);
             },
-            value: formData["age"],
-          },
-          {
-            id: 2,
-            label: "Weight in Kg",
-            placeholder: "Weight",
-            onChange: (value) => {
-              handleDataChange({ value, dataType: "weight" });
-            },
-            value: formData["weight"],
-          },
-          {
-            id: 3,
-            label: "Height (CM) ",
-            placeholder: "Height",
-            onChange: (value) => {
-              handleDataChange({ value, dataType: "height" });
-            },
-            value: formData["height"],
-          },
-        ]}
+            placeholder:
+              data.name.slice(0, 1).toUpperCase() + data.name.slice(1),
+          };
+        })}
       />
       <button type="submit" className="btn btn-primary">
         Submit
