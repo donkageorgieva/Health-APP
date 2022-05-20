@@ -46,23 +46,18 @@ function App() {
                         name: "age",
                         label: "Age",
                         placeholder: "Age",
-
-                        // value: formData["age"],
                       },
                       {
                         id: 2,
                         name: "weight",
                         label: "Weight in Kg",
                         placeholder: "Weight",
-
-                        // value: formData["weight"],
                       },
                       {
                         id: 3,
                         label: "Height (CM) ",
                         placeholder: "Height",
                         name: "height",
-                        // value: formData["height"],
                       },
                     ]}
                   />

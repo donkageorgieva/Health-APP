@@ -26,12 +26,7 @@ const Form = (props) => {
     // }
     setFormData([]);
   };
-  useEffect(() => {
-    const field = formData.find((field) => {
-      return field.name === "age";
-    });
-    console.log(field.value);
-  }, []);
+
   return (
     <form onSubmit={handleFormSubmit}>
       <InputGroup
@@ -46,6 +41,7 @@ const Form = (props) => {
             },
             placeholder:
               data.name.slice(0, 1).toUpperCase() + data.name.slice(1),
+            label: data.name.slice(0, 1).toUpperCase() + data.name.slice(1),
           };
         })}
       />
