@@ -4,7 +4,6 @@ import InputGroup from "../../components/InputGroup/InputGroup";
 const Form = (props) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(props.formData);
-
   const handleDataChange = (value, name) => {
     const dataIndex = formData.findIndex((data) => data.name === name);
     console.log(formData[dataIndex]);

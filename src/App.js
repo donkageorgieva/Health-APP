@@ -40,25 +40,31 @@ function App() {
                       { name: "weight", value: "" },
                       { name: "height", value: "" },
                     ]}
-                    inputData={[
-                      {
-                        id: 1,
-                        name: "age",
-                        label: "Age",
-                        placeholder: "Age",
-                      },
-                      {
-                        id: 2,
-                        name: "weight",
-                        label: "Weight in Kg",
-                        placeholder: "Weight",
-                      },
-                      {
-                        id: 3,
-                        label: "Height (CM) ",
-                        placeholder: "Height",
-                        name: "height",
-                      },
+                  />
+                  {bmi ? (
+                    <InfoBox
+                      info={`Your BMI range is ${bmi.bmiRange}`}
+                      heading={bmi.value}
+                      classes={infoClass}
+                    />
+                  ) : (
+                    <h1>Loading .. </h1>
+                  )}
+                </React.Fragment>
+              }
+            />
+            <Route
+              path="/calories"
+              element={
+                <React.Fragment>
+                  <Form
+                    fetchFnc={fetchBMI}
+                    formData={[
+                      { name: "age", value: "" },
+                      { name: "weight", value: "" },
+                      { name: "height", value: "" },
+                      { name: "gender", value: "" },
+                      { name: "activity", value: "" },
                     ]}
                   />
                   {bmi ? (
