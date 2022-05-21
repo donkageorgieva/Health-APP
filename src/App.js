@@ -73,6 +73,7 @@ function App() {
                     selectData={[
                       {
                         defaultValue: "m",
+                        label: "Gender",
                         options: [
                           { value: "m", text: "Male" },
                           { value: "f", text: "Female" },
