@@ -7,18 +7,19 @@ const Form = (props) => {
   console.log(props.formData, "FORM DATA");
   const handleDataChange = (value, name) => {
     const dataIndex = formData.findIndex((data) => data.name === name);
-    console.log(formData[dataIndex]);
     const updatedData = [...formData];
     updatedData[dataIndex].value = value;
     setFormData(updatedData);
   };
-  useEffect(() => {
-    console.log(formData, "form data");
-  }, [formData]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log(formData, "submit");
     const payload = {};
-
+    formData.forEach((dataObj) => {
+      payload[dataObj.name] = dataObj.value;
+    });
+    console.log(payload);
     // dispatch(
     //   props.fetchFnc({
     //     weight: parseFloat(formData.weight),
@@ -29,7 +30,7 @@ const Form = (props) => {
     // for (const key in formData) {
     //   clearedFormData[key] = "";
     // }
-    setFormData([]);
+    // setFormData([]);
   };
 
   return (

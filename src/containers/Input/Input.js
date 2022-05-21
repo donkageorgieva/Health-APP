@@ -2,6 +2,7 @@ const Input = (props) => {
   const handleValueChange = (val) => {
     props.valueChanged(val);
   };
+
   return (
     <input
       className="form-control"
@@ -9,6 +10,7 @@ const Input = (props) => {
       aria-describedby={props.describe}
       placeholder={props.placeholder}
       value={props.value}
+      type={props.type}
       onChange={(e) => {
         handleValueChange(e.target.value);
       }}

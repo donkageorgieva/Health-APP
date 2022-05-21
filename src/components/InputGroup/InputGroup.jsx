@@ -14,6 +14,7 @@ const InputGroup = (props) => {
           placeholder={data.placeholder}
           describe="Age"
           value={data.value}
+          type={data.type}
         />
       </div>
     );

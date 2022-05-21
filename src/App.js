@@ -14,8 +14,10 @@ function App() {
   useEffect(() => {
     if (bmi.bmiRange === "healthy") {
       setInfoClass("alert-success");
-    } else {
+    } else if (bmi.bmiRange !== "healthy" && bmi.bmiRange.trim().length > 0) {
       setInfoClass("alert-danger");
+    } else {
+      setInfoClass("");
     }
   }, [bmi]);
 
@@ -38,9 +40,9 @@ function App() {
                   <Form
                     fetchFnc={fetchBMI}
                     formData={[
-                      { name: "age", value: "" },
-                      { name: "weight", value: "" },
-                      { name: "height", value: "" },
+                      { name: "age", value: null, type: "number" },
+                      { name: "weight", value: null, type: "number" },
+                      { name: "height", value: null, type: "number" },
                     ]}
                   />
                   {bmi ? (
@@ -62,9 +64,9 @@ function App() {
                   <h1>Calories</h1>
                   <Form
                     formData={[
-                      { name: "age", value: "" },
-                      { name: "weight", value: "" },
-                      { name: "height", value: "" },
+                      { name: "age", value: "", pattern: "[0-9]*" },
+                      { name: "weight", value: "", pattern: "[0-9]*" },
+                      { name: "height", value: "", pattern: "[0-9]*" },
                       { name: "gender", value: "", option: true },
                       { name: "activity", value: "", option: true },
                     ]}
