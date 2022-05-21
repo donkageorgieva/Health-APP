@@ -27,7 +27,7 @@ function App() {
         navLinks={[
           { name: "BMI Calculator", to: "/" },
           { name: "Calorie Calculator", to: "/calories" },
-          { name: "Measurments Calculator", to: "/convert" },
+          { name: "Conversion Calculator", to: "/convert" },
         ]}
       />
       <div className="container">
@@ -37,6 +37,7 @@ function App() {
               path="/"
               element={
                 <React.Fragment>
+                  <h1> BMI</h1>
                   <Form
                     fetchFnc={fetchBMI}
                     formData={[
@@ -61,13 +62,12 @@ function App() {
               path="/calories"
               element={
                 <React.Fragment>
-                  <h1>Calories</h1>
+                  <h1> Calorie Needs</h1>
                   <Form
                     formData={[
-                      { name: "age", value: "" },
-                      { name: "weight", value: "" },
-                      { name: "height", value: "" },
-                      { name: "activity", value: "" },
+                      { name: "age", value: "", type: "number" },
+                      { name: "weight", value: "", type: "number" },
+                      { name: "height", value: "", type: "number" },
                     ]}
                     selectData={[
                       {
