@@ -51,6 +51,7 @@ const Form = (props) => {
               label: data.name.slice(0, 1).toUpperCase() + data.name.slice(1),
             };
           })}
+          selectData={props.selectData}
         />
       }
 

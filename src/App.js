@@ -40,9 +40,9 @@ function App() {
                   <Form
                     fetchFnc={fetchBMI}
                     formData={[
-                      { name: "age", value: null, type: "number" },
-                      { name: "weight", value: null, type: "number" },
-                      { name: "height", value: null, type: "number" },
+                      { name: "age", value: "", type: "number" },
+                      { name: "weight", value: "", type: "number" },
+                      { name: "height", value: "", type: "number" },
                     ]}
                   />
                   {bmi ? (
@@ -64,11 +64,20 @@ function App() {
                   <h1>Calories</h1>
                   <Form
                     formData={[
-                      { name: "age", value: "", pattern: "[0-9]*" },
-                      { name: "weight", value: "", pattern: "[0-9]*" },
-                      { name: "height", value: "", pattern: "[0-9]*" },
-                      { name: "gender", value: "", option: true },
-                      { name: "activity", value: "", option: true },
+                      { name: "age", value: "" },
+                      { name: "weight", value: "" },
+                      { name: "height", value: "" },
+                      { name: "gender", value: "" },
+                      { name: "activity", value: "" },
+                    ]}
+                    selectData={[
+                      {
+                        defaultValue: "m",
+                        options: [
+                          { value: "m", text: "Male" },
+                          { value: "f", text: "Female" },
+                        ],
+                      },
                     ]}
                   />
                 </React.Fragment>
