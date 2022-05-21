@@ -4,7 +4,9 @@ import { fetchBMI } from "./redux/reducers/thunks/fetchBMI";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Form from "./containers/Form/Form";
 import InfoBox from "./components/InfoBox/InfoBox";
+import BMILayout from "./components/BMILayout/BMILayout";
 import Header from "./components/Header/Header";
+import CaloriesLayout from "./components/CaloriesLayout/CaloriesLayout";
 import "./App.scss";
 
 function App() {
@@ -36,64 +38,14 @@ function App() {
             <Route
               path="/"
               element={
-                <React.Fragment>
-                  <h1> BMI</h1>
-                  <Form
-                    fetchFnc={fetchBMI}
-                    formData={[
-                      { name: "age", value: "", type: "number" },
-                      { name: "weight", value: "", type: "number" },
-                      { name: "height", value: "", type: "number" },
-                    ]}
-                  />
-                  {bmi ? (
-                    <InfoBox
-                      info={`Your BMI range is ${bmi.bmiRange}`}
-                      heading={bmi.value}
-                      classes={infoClass}
-                    />
-                  ) : (
-                    <h1>Loading .. </h1>
-                  )}
-                </React.Fragment>
+                <BMILayout
+                  bmi={bmi}
+                  infoClass={infoClass}
+                  fetchBMI={fetchBMI}
+                />
               }
             />
-            <Route
-              path="/calories"
-              element={
-                <React.Fragment>
-                  <h1> Calorie Needs</h1>
-                  <Form
-                    formData={[
-                      { name: "age", value: "", type: "number" },
-                      { name: "weight", value: "", type: "number" },
-                      { name: "height", value: "", type: "number" },
-                    ]}
-                    selectData={[
-                      {
-                        defaultValue: "m",
-                        label: "Gender",
-                        options: [
-                          { value: "m", text: "Male" },
-                          { value: "f", text: "Female" },
-                        ],
-                      },
-                      {
-                        label: "Activity",
-                        defaultValue: "n",
-                        options: [
-                          { value: "n", text: "Sedentary" },
-                          { value: "s", text: "Lightly Active" },
-                          { value: "m", text: "Moderately Active" },
-                          { value: "l", text: "Very Active" },
-                          { value: "x", text: "Extra Active" },
-                        ],
-                      },
-                    ]}
-                  />
-                </React.Fragment>
-              }
-            />
+            <Route path="/calories" element={<CaloriesLayout />} />
           </Routes>
         </main>
       </div>
