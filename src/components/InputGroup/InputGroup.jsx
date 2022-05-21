@@ -22,7 +22,11 @@ const InputGroup = (props) => {
   const selectElements =
     props.selectData &&
     props.selectData.map((data) => (
-      <Select options={data.options} label={data.label} />
+      <Select
+        options={data.options}
+        label={data.label}
+        key={data.label + data.options.length}
+      />
     ));
   return (
     <div>

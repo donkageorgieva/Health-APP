@@ -67,7 +67,6 @@ function App() {
                       { name: "age", value: "" },
                       { name: "weight", value: "" },
                       { name: "height", value: "" },
-                      { name: "gender", value: "" },
                       { name: "activity", value: "" },
                     ]}
                     selectData={[
@@ -77,6 +76,17 @@ function App() {
                         options: [
                           { value: "m", text: "Male" },
                           { value: "f", text: "Female" },
+                        ],
+                      },
+                      {
+                        label: "Activity",
+                        defaultValue: "n",
+                        options: [
+                          { value: "n", text: "Sedentary" },
+                          { value: "s", text: "Lightly Active" },
+                          { value: "m", text: "Moderately Active" },
+                          { value: "l", text: "Very Active" },
+                          { value: "x", text: "Extra Active" },
                         ],
                       },
                     ]}
