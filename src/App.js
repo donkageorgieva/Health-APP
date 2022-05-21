@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchBMI } from "./redux/reducers/thunks/fetchBMI";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Form from "./containers/Form/Form";
-import InfoBox from "./components/InfoBox/InfoBox";
+import { Routes, Route } from "react-router-dom";
 import BMILayout from "./components/BMILayout/BMILayout";
 import Header from "./components/Header/Header";
 import CaloriesLayout from "./components/CaloriesLayout/CaloriesLayout";
