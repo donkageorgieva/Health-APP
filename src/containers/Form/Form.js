@@ -19,7 +19,6 @@ const Form = (props) => {
     });
     console.log(payload);
     dispatch(props.fetchFnc(payload));
-    console.log(formData, "DATA FORM");
     const clearedFormData = [...formData];
     clearedFormData.forEach((form) => (form.value = ""));
 
@@ -30,10 +29,10 @@ const Form = (props) => {
     <form onSubmit={handleFormSubmit}>
       {
         <InputGroup
-          inputData={formData.map((data) => {
+          inputData={props.formData.map((data) => {
             return {
               ...data,
-              value: formData.find((field) => {
+              value: props.formData.find((field) => {
                 return field.name === data.name;
               }).value,
               onChange: (value) => {

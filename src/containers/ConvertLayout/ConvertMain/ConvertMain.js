@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Form from "../../Form/Form";
 const ConvertMain = (props) => {
@@ -6,8 +6,12 @@ const ConvertMain = (props) => {
 
   return (
     <React.Fragment>
-      <h1> {params.metric} </h1>
-      <Form />
+      <h1>
+        {" "}
+        Convert to{" "}
+        {params.metric.slice(0, 1).toUpperCase() + params.metric.slice(1)}{" "}
+      </h1>
+      <Form formData={[{ name: `${params.metric}`, value: "" }]} />
     </React.Fragment>
   );
 };

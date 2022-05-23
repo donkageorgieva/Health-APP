@@ -8,10 +8,10 @@ const ConvertLayout = () => {
       <h1>Convert</h1>
       <ButtonGroup
         buttons={[
-          { text: "Kg to Lb", to: "to-lb" },
-          { text: "Lb to Kg", to: "to-kg" },
-          { text: "Ounce to Gram", to: "to-gram" },
-          { text: "Gram to Ounce", to: "to-ounce" },
+          { text: "Kg to Lb", to: "lb" },
+          { text: "Lb to Kg", to: "kg" },
+          { text: "Ounce to Gram", to: "gram" },
+          { text: "Gram to Ounce", to: "ounce" },
         ]}
       />
       <Outlet />
