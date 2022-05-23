@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBMI } from "./thunks/fetchBMI";
+
 const initialState = {
-  random: "Hello",
   bmi: {
     value: null,
     bmiRange: "",

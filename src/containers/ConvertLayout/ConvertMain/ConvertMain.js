@@ -6,11 +6,11 @@ const ConvertMain = (props) => {
 
   return (
     <React.Fragment>
-      <h1>
+      <h2>
         {" "}
         Convert to{" "}
         {params.metric.slice(0, 1).toUpperCase() + params.metric.slice(1)}{" "}
-      </h1>
+      </h2>
       <Form formData={[{ name: `${params.metric}`, value: "" }]} />
     </React.Fragment>
   );
