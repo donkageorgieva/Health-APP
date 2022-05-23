@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom";
+
 const ButtonGroup = (props) => {
   const buttons = props.buttons.map((button) => (
-    <button type="button" class="btn btn-secondary">
+    <Link
+      type="button"
+      className="btn btn-secondary"
+      to={button.to}
+      key={button.text}
+    >
       {button.text}
-    </button>
+    </Link>
   ));
   return (
-    <div class="btn-group" role="group" aria-label={props.label}>
+    <div class="btn-group  btn-group-md" role="group" aria-label={props.label}>
       {buttons}
     </div>
   );

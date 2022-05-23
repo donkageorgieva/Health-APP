@@ -44,8 +44,10 @@ function App() {
                 />
               }
             />
-            <Route path="/calories" element={<CaloriesLayout />} />
-            <Route path="/convert" element={<ConvertLayout />} />
+            <Route path="calories" element={<CaloriesLayout />} />
+            <Route path="convert" element={<ConvertLayout />}>
+              <Route path=":to" element={<h1>Hi</h1>} />
+            </Route>
           </Routes>
         </main>
       </div>
