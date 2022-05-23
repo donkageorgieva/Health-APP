@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { fetchBMI } from "./redux/reducers/thunks/fetchBMI";
 import { Routes, Route } from "react-router-dom";
-import BMILayout from "./components/BMILayout/BMILayout";
+import BMILayout from "./containers/BMILayout/BMILayout";
 import Header from "./components/Header/Header";
-import CaloriesLayout from "./components/CaloriesLayout/CaloriesLayout";
-import ConvertLayout from "./components/ConvertLayout/ConvertLayout";
+import CaloriesLayout from "./containers/CaloriesLayout/CaloriesLayout";
+import ConvertLayout from "./containers/ConvertLayout/ConvertLayout";
 import "./App.scss";
-import ConvertMain from "./components/ConvertLayout/ConvertMain/ConvertMain";
+import ConvertMain from "./containers/ConvertLayout/ConvertMain/ConvertMain";
 
 function App() {
-  const bmi = useSelector((state) => state.health.bmi);
-  const [infoClass, setInfoClass] = useState("");
-
-  useEffect(() => {
-    if (bmi.bmiRange === "healthy") {
-      setInfoClass("alert-success");
-    } else if (bmi.bmiRange !== "healthy" && bmi.bmiRange.trim().length > 0) {
-      setInfoClass("alert-danger");
-    } else {
-      setInfoClass("");
-    }
-  }, [bmi]);
-
   return (
     <div className="App">
       <Header
@@ -35,16 +21,7 @@ function App() {
       <div className="container">
         <main className="pt-5">
           <Routes>
-            <Route
-              path="/"
-              element={
-                <BMILayout
-                  bmi={bmi}
-                  infoClass={infoClass}
-                  fetchBMI={fetchBMI}
-                />
-              }
-            />
+            <Route path="/" element={<BMILayout />} />
             <Route path="calories" element={<CaloriesLayout />} />
             <Route path="convert" element={<ConvertLayout />}>
               <Route path=":metric" element={<ConvertMain />} />

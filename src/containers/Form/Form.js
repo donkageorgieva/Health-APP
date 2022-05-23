@@ -20,12 +20,7 @@ const Form = (props) => {
       payload[dataObj.name] = dataObj.value;
     });
     console.log(payload);
-    // dispatch(
-    //   props.fetchFnc({
-    //     weight: parseFloat(formData.weight),
-    //     height: parseFloat(formData.height),
-    //   })
-    // );
+    dispatch(props.fetchFnc(payload));
     // const clearedFormData = [];
     // for (const key in formData) {
     //   clearedFormData[key] = "";

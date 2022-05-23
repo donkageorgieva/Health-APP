@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
-import ButtonGroup from "../ButtonGroup/ButtonGroup";
+import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
 
 const ConvertLayout = () => {
   return (

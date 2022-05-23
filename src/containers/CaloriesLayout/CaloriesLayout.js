@@ -1,4 +1,4 @@
-import Form from "../../containers/Form/Form";
+import Form from "../Form/Form";
 import React from "react";
 const CaloriesLayout = () => {
   return (
