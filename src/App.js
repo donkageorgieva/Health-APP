@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import BMILayout from "./containers/BMILayout/BMILayout";
 import Header from "./components/Header/Header";

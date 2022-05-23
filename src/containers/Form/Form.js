@@ -4,7 +4,6 @@ import InputGroup from "../../components/InputGroup/InputGroup";
 const Form = (props) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(props.formData);
-  console.log(props.formData, "FORM DATA");
   const handleDataChange = (value, name) => {
     const dataIndex = formData.findIndex((data) => data.name === name);
     const updatedData = [...formData];
@@ -14,18 +13,17 @@ const Form = (props) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formData, "submit");
     const payload = {};
     formData.forEach((dataObj) => {
       payload[dataObj.name] = dataObj.value;
     });
     console.log(payload);
     dispatch(props.fetchFnc(payload));
-    // const clearedFormData = [];
-    // for (const key in formData) {
-    //   clearedFormData[key] = "";
-    // }
-    // setFormData([]);
+    console.log(formData, "DATA FORM");
+    const clearedFormData = [...formData];
+    clearedFormData.forEach((form) => (form.value = ""));
+
+    setFormData(clearedFormData);
   };
 
   return (
