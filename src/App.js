@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import CaloriesLayout from "./components/CaloriesLayout/CaloriesLayout";
 import ConvertLayout from "./components/ConvertLayout/ConvertLayout";
 import "./App.scss";
+import ConvertMain from "./components/ConvertLayout/ConvertMain/ConvertMain";
 
 function App() {
   const bmi = useSelector((state) => state.health.bmi);
@@ -46,7 +47,7 @@ function App() {
             />
             <Route path="calories" element={<CaloriesLayout />} />
             <Route path="convert" element={<ConvertLayout />}>
-              <Route path=":to" element={<h1>Hi</h1>} />
+              <Route path=":metric" element={<ConvertMain />} />
             </Route>
           </Routes>
         </main>
