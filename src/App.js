@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import BMILayout from "./components/BMILayout/BMILayout";
 import Header from "./components/Header/Header";
 import CaloriesLayout from "./components/CaloriesLayout/CaloriesLayout";
+import ConvertLayout from "./components/ConvertLayout/ConvertLayout";
 import "./App.scss";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         ]}
       />
       <div className="container">
-        <main>
+        <main className="pt-5">
           <Routes>
             <Route
               path="/"
@@ -44,6 +45,7 @@ function App() {
               }
             />
             <Route path="/calories" element={<CaloriesLayout />} />
+            <Route path="/convert" element={<ConvertLayout />} />
           </Routes>
         </main>
       </div>
