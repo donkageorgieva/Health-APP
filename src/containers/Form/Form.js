@@ -43,8 +43,8 @@ const Form = (props) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    let payload = {};
     if (!formData.selectData) {
-      let payload = {};
       if (Array.isArray(formData.inputData)) {
         formData.inputData.forEach((dataObj) => {
           payload[dataObj.name] = dataObj.value;
@@ -52,10 +52,15 @@ const Form = (props) => {
       } else {
         payload = formData.inputData.value;
       }
-      props.fetchFnc(payload);
     } else {
-      console.log("hello");
+      formData.inputData.forEach((dataObj) => {
+        payload[dataObj.name] = dataObj.value;
+      });
+      formData.selectData.forEach((dataObj) => {
+        payload[dataObj.name] = dataObj.value;
+      });
     }
+    props.fetchFnc(payload);
   };
 
   return (

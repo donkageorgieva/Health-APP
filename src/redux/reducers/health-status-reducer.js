@@ -78,6 +78,7 @@ const healthSlice = createSlice({
       state.calorieNeeds.weightGain = action.payload.highCalories;
       state.calorieNeeds.maintain = action.payload.moderateCalories;
       state.calorieNeeds.extremeWeightLoss = action.payload.superLowCalories;
+      console.log("fufilled", action.payload);
     },
     [fetchCalories.rejected]: (state, aciton) => {
       state.bmi.error = true;
