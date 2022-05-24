@@ -37,12 +37,12 @@ const ConvertMain = (props) => {
   }, [params.metric]);
   return (
     <React.Fragment>
-      <h2>
+      <h1>
         {" "}
         {opositeMetric &&
           opositeMetric[0].toUpperCase() + opositeMetric.slice(1)}{" "}
         to {params.metric.slice(0, 1).toUpperCase() + params.metric.slice(1)}{" "}
-      </h2>
+      </h1>
       <Form
         formData={{
           name: `${params.metric}`,

@@ -12,6 +12,7 @@ const initialState = {
     weightLoss: null,
     weightGain: null,
     maintain: null,
+    extremeWeightLoss: null,
     isLoading: false,
     error: false,
   },
@@ -72,8 +73,11 @@ const healthSlice = createSlice({
     [fetchCalories.pending]: (state, aciton) => {
       state.calorieNeeds.isLoading = true;
     },
-    [fetchCalories.fulfilled]: (state, aciton) => {
-      console.log(aciton.payload);
+    [fetchCalories.fulfilled]: (state, action) => {
+      state.calorieNeeds.weightLoss = action.payload.lowCalories;
+      state.calorieNeeds.weightGain = action.payload.highCalories;
+      state.calorieNeeds.maintain = action.payload.moderateCalories;
+      state.calorieNeeds.extremeWeightLoss = action.payload.superLowCalories;
     },
     [fetchCalories.rejected]: (state, aciton) => {
       state.bmi.error = true;

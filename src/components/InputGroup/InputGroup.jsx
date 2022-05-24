@@ -4,8 +4,10 @@ import Select from "../../containers/Select/Select";
 const InputGroup = (props) => {
   const inputElements = props.inputData.map((data) => {
     return (
-      <div className="form-group" key={data.id + data.name}>
-        <label htmlFor={data.id}>{data.label}</label>
+      <React.Fragment key={data.label}>
+        <label htmlFor={data.id} className=" mt-1">
+          {data.label}{" "}
+        </label>
         <Input
           valueChanged={data.onChange}
           id={data.id}
@@ -15,7 +17,7 @@ const InputGroup = (props) => {
           value={data.value}
           type={data.type}
         />
-      </div>
+      </React.Fragment>
     );
   });
   const selectElements =
@@ -29,7 +31,7 @@ const InputGroup = (props) => {
       />
     ));
   return (
-    <div>
+    <div className="form-group">
       {inputElements} {props.selectData && selectElements}
     </div>
   );

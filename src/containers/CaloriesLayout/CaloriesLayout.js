@@ -21,6 +21,8 @@ const CaloriesLayout = () => {
           {
             defaultValue: "m",
             label: "Gender",
+            name: "gender",
+            value: "m",
             options: [
               { value: "m", text: "Male" },
               { value: "f", text: "Female" },
@@ -28,7 +30,9 @@ const CaloriesLayout = () => {
           },
           {
             label: "Activity",
+            name: "activity",
             defaultValue: "n",
+            value: "n",
             options: [
               { value: "n", text: "Sedentary" },
               { value: "s", text: "Lightly Active" },

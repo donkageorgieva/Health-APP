@@ -9,9 +9,13 @@ const Input = (props) => {
 
   return (
     <React.Fragment>
-      {props.label && <label htmlFor={props.id}>{props.label}</label>}
+      {props.label && (
+        <label htmlFor={props.id} className=" mt-1">
+          {props.label}
+        </label>
+      )}
       <input
-        className="form-control"
+        className="form-control my-1"
         id={props.id}
         aria-describedby={props.describe}
         placeholder={props.placeholder}

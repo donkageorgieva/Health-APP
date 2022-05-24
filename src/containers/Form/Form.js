@@ -2,36 +2,60 @@ import { useState } from "react";
 import InputGroup from "../../components/InputGroup/InputGroup";
 import Input from "../Input/Input";
 const Form = (props) => {
-  const [formData, setFormData] = useState(props.formData);
+  const [formData, setFormData] = useState({
+    inputData: props.formData,
+    selectData: props.selectData && props.selectData,
+  });
   const handleDataChange = (value, name) => {
-    console.log(value);
     let updatedData;
-    if (Array.isArray(formData)) {
-      const dataIndex = formData.findIndex((data) => data.name === name);
-      updatedData = [...formData];
-      if (dataIndex >= 0) {
-        updatedData[dataIndex].value = value;
+    if (!value.selectValue) {
+      if (Array.isArray(formData.inputData)) {
+        const dataIndex = formData.inputData.findIndex(
+          (data) => data.name === name
+        );
+        updatedData = [...formData.inputData];
+        if (dataIndex >= 0) {
+          updatedData[dataIndex].value = value;
+        } else {
+          updatedData.push(value);
+        }
       } else {
-        updatedData.push(value);
+        updatedData = formData.inputData;
+        updatedData.value = value;
       }
+      setFormData({
+        ...formData,
+        inputData: updatedData,
+      });
     } else {
-      updatedData = formData;
-      updatedData.value = value;
+      console.log(value);
+      const dataIndex = formData.selectData.findIndex(
+        (data) => data.name === value.name
+      );
+      const updatedData = [...formData.selectData];
+      updatedData[dataIndex].value = value.value;
+      setFormData({
+        ...formData,
+        selectData: updatedData,
+      });
     }
-    setFormData(updatedData);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    let payload = {};
-    if (Array.isArray(formData)) {
-      formData.forEach((dataObj) => {
-        payload[dataObj.name] = dataObj.value;
-      });
+    if (!formData.selectData) {
+      let payload = {};
+      if (Array.isArray(formData.inputData)) {
+        formData.inputData.forEach((dataObj) => {
+          payload[dataObj.name] = dataObj.value;
+        });
+      } else {
+        payload = formData.inputData.value;
+      }
+      props.fetchFnc(payload);
     } else {
-      payload = formData.value;
+      console.log("hello");
     }
-    props.fetchFnc(payload);
   };
 
   return (
@@ -65,7 +89,7 @@ const Form = (props) => {
         />
       )}
 
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-primary my-2">
         Submit
       </button>
     </form>
