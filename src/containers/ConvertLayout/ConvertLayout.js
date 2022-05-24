@@ -9,7 +9,6 @@ const ConvertLayout = () => {
   }, []);
   return (
     <React.Fragment>
-      <h1>Convert </h1>
       <ButtonGroup
         buttons={[
           { text: "Kg to Lb", to: "lb" },
