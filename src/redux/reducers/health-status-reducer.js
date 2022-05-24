@@ -14,7 +14,6 @@ const initialState = {
     maintain: null,
     isLoading: false,
     error: false,
-    
   },
   calorieGoal: null,
   recipes: [],
@@ -74,7 +73,7 @@ const healthSlice = createSlice({
       state.calorieNeeds.isLoading = true;
     },
     [fetchCalories.fulfilled]: (state, aciton) => {
-      console.log("fufilled");
+      console.log(aciton.payload);
     },
     [fetchCalories.rejected]: (state, aciton) => {
       state.bmi.error = true;

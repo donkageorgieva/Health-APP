@@ -1,8 +1,11 @@
 import Form from "../Form/Form";
 import React from "react";
+import { fetchCalories } from "../../redux/reducers/thunks/fetchCalories";
+import { useDispatch } from "react-redux";
 const CaloriesLayout = () => {
+  const dispatch = useDispatch();
   const handleFetchCalories = (info) => {
-    console.log(info);
+    dispatch(fetchCalories(info));
   };
   return (
     <React.Fragment>
