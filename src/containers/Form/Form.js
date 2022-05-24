@@ -4,10 +4,15 @@ import Input from "../Input/Input";
 const Form = (props) => {
   const [formData, setFormData] = useState(props.formData);
   const handleDataChange = (value, name) => {
-    const dataIndex = formData.findIndex((data) => data.name === name);
-    console.log(value, name, formData[dataIndex]);
-    const updatedData = [...formData];
-    updatedData[dataIndex].value = value;
+    let updatedData;
+    if (Array.isArray(formData)) {
+      const dataIndex = formData.findIndex((data) => data.name === name);
+      updatedData = [...formData];
+      updatedData[dataIndex].value = value;
+    } else {
+      updatedData = formData;
+      updatedData.value = value;
+    }
     setFormData(updatedData);
     // updatedData[dataIndex].value = value;
     // setFormData(updatedData);
@@ -21,7 +26,7 @@ const Form = (props) => {
         payload[dataObj.name] = dataObj.value;
       });
     } else {
-      payload = formData;
+      payload = formData.value;
     }
     props.fetchFnc(payload);
   };
@@ -52,6 +57,7 @@ const Form = (props) => {
           placeholder={props.formData.placeholder}
           label={props.formData.label}
           id={props.formData.name}
+          valueChanged={handleDataChange}
         />
       )}
 

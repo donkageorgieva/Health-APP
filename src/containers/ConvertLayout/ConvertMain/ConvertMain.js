@@ -6,10 +6,10 @@ const ConvertMain = (props) => {
   const params = useParams();
   const [convertedValue, setConvertedValue] = useState(null);
   const convertMetrics = (value) => {
-    console.log(value, "VALUE");
+    console.log(value, "payload");
     axios
       .get(
-        `https://convert-metrics-rest-api.herokuapp.com/to-${params.metric}/100`
+        `https://convert-metrics-rest-api.herokuapp.com/to-${params.metric}/${value}`
       )
       .then((response) => {
         setConvertedValue(response.data);
@@ -28,7 +28,11 @@ const ConvertMain = (props) => {
         formData={{ name: `${params.metric}`, value: "" }}
         fetchFnc={convertMetrics}
       />
-      {convertedValue && <h1>{convertedValue[params.metric + "s"]}</h1>}
+      {convertedValue ? (
+        <h1>{convertedValue[params.metric + "s"]}</h1>
+      ) : (
+        <h1>Please enter a value</h1>
+      )}
     </React.Fragment>
   );
 };
