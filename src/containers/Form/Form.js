@@ -14,8 +14,6 @@ const Form = (props) => {
       updatedData.value = value;
     }
     setFormData(updatedData);
-    // updatedData[dataIndex].value = value;
-    // setFormData(updatedData);
   };
 
   const handleFormSubmit = (e) => {

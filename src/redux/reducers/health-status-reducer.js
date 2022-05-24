@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBMI } from "./thunks/fetchBMI";
-
+import { fetchCalories } from "./thunks/fetchCalories";
 const initialState = {
   bmi: {
     value: null,
@@ -12,6 +12,9 @@ const initialState = {
     weightLoss: null,
     weightGain: null,
     maintain: null,
+    isLoading: false,
+    error: false,
+    
   },
   calorieGoal: null,
   recipes: [],
@@ -59,10 +62,21 @@ const healthSlice = createSlice({
       state.bmi.isLoading = false;
       state.bmi.error = false;
       state.bmi.bmiRange = aciton.payload.bmiRange;
-      state.bmi.value = aciton.payload.bmi.toFixed(2);
+      state.bmi.value = aciton.payload.bmi;
       console.log("fufilled");
     },
     [fetchBMI.rejected]: (state, aciton) => {
+      state.bmi.error = true;
+      state.bmi.isLoading = false;
+      console.log(aciton.payload, "error");
+    },
+    [fetchCalories.pending]: (state, aciton) => {
+      state.calorieNeeds.isLoading = true;
+    },
+    [fetchCalories.fulfilled]: (state, aciton) => {
+      console.log("fufilled");
+    },
+    [fetchCalories.rejected]: (state, aciton) => {
       state.bmi.error = true;
       state.bmi.isLoading = false;
       console.log(aciton.payload, "error");
