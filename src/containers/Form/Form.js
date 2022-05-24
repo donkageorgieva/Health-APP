@@ -1,33 +1,34 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import InputGroup from "../../components/InputGroup/InputGroup";
+import Input from "../Input/Input";
 const Form = (props) => {
-  const dispatch = useDispatch();
   const [formData, setFormData] = useState(props.formData);
   const handleDataChange = (value, name) => {
     const dataIndex = formData.findIndex((data) => data.name === name);
+    console.log(value, name, formData[dataIndex]);
     const updatedData = [...formData];
     updatedData[dataIndex].value = value;
     setFormData(updatedData);
+    // updatedData[dataIndex].value = value;
+    // setFormData(updatedData);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const payload = {};
-    formData.forEach((dataObj) => {
-      payload[dataObj.name] = dataObj.value;
-    });
-    console.log(payload);
-    dispatch(props.fetchFnc(payload));
-    const clearedFormData = [...formData];
-    clearedFormData.forEach((form) => (form.value = ""));
-
-    setFormData(clearedFormData);
+    let payload = {};
+    if (Array.isArray(formData)) {
+      formData.forEach((dataObj) => {
+        payload[dataObj.name] = dataObj.value;
+      });
+    } else {
+      payload = formData;
+    }
+    props.fetchFnc(payload);
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
-      {
+      {Array.isArray(props.formData) ? (
         <InputGroup
           inputData={props.formData.map((data) => {
             return {
@@ -45,7 +46,14 @@ const Form = (props) => {
           })}
           selectData={props.selectData}
         />
-      }
+      ) : (
+        <Input
+          value={props.formData.value}
+          placeholder={props.formData.placeholder}
+          label={props.formData.label}
+          id={props.formData.name}
+        />
+      )}
 
       <button type="submit" className="btn btn-primary">
         Submit

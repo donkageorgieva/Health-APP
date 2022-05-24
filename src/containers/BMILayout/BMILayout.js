@@ -2,12 +2,15 @@ import React from "react";
 import Form from "../Form/Form";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import { fetchBMI } from "../../redux/reducers/thunks/fetchBMI";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 const BMILayout = (props) => {
   const bmi = useSelector((state) => state.health.bmi);
   const [infoClass, setInfoClass] = useState("");
-
+  const dispatch = useDispatch();
+  const handleFetchBMI = (payload) => {
+    dispatch(fetchBMI(payload));
+  };
   useEffect(() => {
     if (bmi.bmiRange === "healthy") {
       setInfoClass("alert-success");
@@ -21,21 +24,19 @@ const BMILayout = (props) => {
     <React.Fragment>
       <h1> BMI</h1>
       <Form
-        fetchFnc={fetchBMI}
+        fetchFnc={handleFetchBMI}
         formData={[
           { name: "age", value: "", type: "number" },
           { name: "weight", value: "", type: "number" },
           { name: "height", value: "", type: "number" },
         ]}
       />
-      {bmi ? (
+      {bmi.bmiRange.length > 0 && (
         <InfoBox
           info={`Your BMI range is ${bmi.bmiRange}`}
           heading={bmi.value}
           classes={infoClass}
         />
-      ) : (
-        <h1>Loading .. </h1>
       )}
     </React.Fragment>
   );

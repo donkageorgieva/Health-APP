@@ -4,13 +4,12 @@ import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
 
 const ConvertLayout = () => {
   const navigate = useNavigate();
-
   useEffect(() => {
     navigate("lb");
   }, []);
   return (
     <React.Fragment>
-      <h1>Convert Metrics</h1>
+      <h1>Convert </h1>
       <ButtonGroup
         buttons={[
           { text: "Kg to Lb", to: "lb" },
