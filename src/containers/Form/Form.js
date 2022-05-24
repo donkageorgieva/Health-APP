@@ -4,11 +4,16 @@ import Input from "../Input/Input";
 const Form = (props) => {
   const [formData, setFormData] = useState(props.formData);
   const handleDataChange = (value, name) => {
+    console.log(value);
     let updatedData;
     if (Array.isArray(formData)) {
       const dataIndex = formData.findIndex((data) => data.name === name);
       updatedData = [...formData];
-      updatedData[dataIndex].value = value;
+      if (dataIndex >= 0) {
+        updatedData[dataIndex].value = value;
+      } else {
+        updatedData.push(value);
+      }
     } else {
       updatedData = formData;
       updatedData.value = value;
@@ -48,6 +53,7 @@ const Form = (props) => {
             };
           })}
           selectData={props.selectData}
+          onChangeSelect={handleDataChange}
         />
       ) : (
         <Input

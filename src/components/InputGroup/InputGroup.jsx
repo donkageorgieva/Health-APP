@@ -2,7 +2,6 @@ import React from "react";
 import Input from "../../containers/Input/Input";
 import Select from "../../containers/Select/Select";
 const InputGroup = (props) => {
-  console.log(props.inputData);
   const inputElements = props.inputData.map((data) => {
     return (
       <div className="form-group" key={data.id + data.name}>
@@ -26,6 +25,7 @@ const InputGroup = (props) => {
         options={data.options}
         label={data.label}
         key={data.label + data.options.length}
+        onChange={props.onChangeSelect}
       />
     ));
   return (

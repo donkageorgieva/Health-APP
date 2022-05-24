@@ -1,6 +1,9 @@
 import Form from "../Form/Form";
 import React from "react";
 const CaloriesLayout = () => {
+  const handleFetchCalories = (info) => {
+    console.log(info);
+  };
   return (
     <React.Fragment>
       <h1> Calorie Needs</h1>
@@ -10,6 +13,7 @@ const CaloriesLayout = () => {
           { name: "weight", value: "", type: "number" },
           { name: "height", value: "", type: "number" },
         ]}
+        fetchFnc={handleFetchCalories}
         selectData={[
           {
             defaultValue: "m",

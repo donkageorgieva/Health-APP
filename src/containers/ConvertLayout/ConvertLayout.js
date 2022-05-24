@@ -6,6 +6,7 @@ const ConvertLayout = () => {
   const navigate = useNavigate();
   useEffect(() => {
     navigate("lb");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <React.Fragment>

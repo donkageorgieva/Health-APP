@@ -10,7 +10,10 @@ const Select = (props) => {
         aria-label="Default select example"
         onChange={(e) => {
           setValue(e.target.value);
-          console.log(value);
+          props.onChange({
+            name: props.label.toLowerCase(),
+            value: e.target.value,
+          });
         }}
         value={value}
         id={props.label.toLowerCase()}
