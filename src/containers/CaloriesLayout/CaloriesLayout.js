@@ -48,6 +48,24 @@ const CaloriesLayout = () => {
           },
         ]}
       />
+      <InfoBox
+        heading={
+          calorieNeeds[0].value
+            ? calorieNeeds.map((need) => {
+                return {
+                  heading: need.name,
+                  strong: need.value,
+                  info: ` calories to reach your goal`,
+                };
+              })
+            : "How to use"
+        }
+        info={
+          !calorieNeeds[0].value &&
+          "Fill in your health info and submit the form to display calorie needs. "
+        }
+        classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
+      />
     </React.Fragment>
   );
 };
