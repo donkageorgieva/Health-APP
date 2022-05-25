@@ -1,9 +1,11 @@
+import { fetchCalories } from "../../redux/reducers/thunks/fetchCalories";
+import { useDispatch, useSelector } from "react-redux";
 import Form from "../Form/Form";
 import React from "react";
-import { fetchCalories } from "../../redux/reducers/thunks/fetchCalories";
-import { useDispatch } from "react-redux";
+import InfoBox from "../../components/InfoBox/InfoBox";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
+  const calorieNeeds = useSelector((state) => state.calorieNeeds);
   const handleFetchCalories = (info) => {
     dispatch(fetchCalories(info));
   };
