@@ -54,7 +54,7 @@ const CaloriesLayout = () => {
             ? calorieNeeds.map((need) => {
                 return {
                   heading: need.name,
-                  strong: need.value,
+                  strongFirst: need.value,
                   info: ` calories to reach your goal`,
                 };
               })

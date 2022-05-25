@@ -94,7 +94,7 @@ const Form = (props) => {
         />
       )}
 
-      <button type="submit" className="btn btn-primary my-2">
+      <button type="submit" className="btn btn-primary my-4">
         Submit
       </button>
     </form>

@@ -33,7 +33,8 @@ const BMILayout = (props) => {
       />
       {bmi.bmiRange.length > 0 && (
         <InfoBox
-          info={`Your BMI range is ${bmi.bmiRange}`}
+          info={`Your BMI range is `}
+          strongLast={bmi.bmiRange}
           heading={bmi.value}
           classes={infoClass}
         />
