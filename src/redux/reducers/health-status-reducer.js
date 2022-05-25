@@ -8,11 +8,25 @@ const initialState = {
     isLoading: false,
     error: false,
   },
-  calorieNeeds: {
-    weightLoss: null,
-    weightGain: null,
-    maintain: null,
-    extremeWeightLoss: null,
+  calories: {
+    calorieNeeds: [
+      {
+        id: "lowCalories",
+        value: null,
+        name: "Weight Loss",
+      },
+      { value: null, name: "Weight Gain", id: "highCalories" },
+      {
+        value: null,
+        name: "Maintain Current Weight",
+        id: "moderateCalories",
+      },
+      {
+        value: null,
+        name: "Fast Weightloss",
+        id: "superLowCalories",
+      },
+    ],
     isLoading: false,
     error: false,
   },
@@ -28,27 +42,27 @@ const healthSlice = createSlice({
       state.bmi = actions.payload.bmi;
       console.log("setting bmi with", actions.payload.bmi);
     },
-    setCalorieNeeds(state, actions) {
-      state.calorieNeeds = actions.payload.calorieNeeds;
+    setcalories(state, actions) {
+      state.calories = actions.payload.calories;
     },
     setCalorieGoal(state, actions) {
       switch (actions.payload.type) {
         case "loose":
-          state.calorieGoal = state.calorieNeeds.weightLoss;
+          state.calorieGoal = state.calories.weightLoss;
           break;
         case "gain":
-          state.calorieGoal = state.calorieNeeds.weightGain;
+          state.calorieGoal = state.calories.weightGain;
           break;
         case "maintain":
-          state.calorieGoal = state.calorieNeeds.maintain;
+          state.calorieGoal = state.calories.maintain;
           break;
         default:
           if (state.bmi.bmiRange.toLowerCase() === "healthy") {
-            state.calorieGoal = state.calorieNeeds.maintain;
+            state.calorieGoal = state.calories.maintain;
           } else if (state.bmi.bmiRange.toLowerCase() === "underweight") {
-            state.calorieGoal = state.calorieNeeds.weightGain;
+            state.calorieGoal = state.calories.weightGain;
           } else if (state.bmi.bmiRange.toLowerCase() === "overweight") {
-            state.calorieGoal = state.calorieNeeds.weightLoss;
+            state.calorieGoal = state.calories.weightLoss;
           }
           break;
       }
@@ -71,20 +85,18 @@ const healthSlice = createSlice({
       console.log(aciton.payload, "error");
     },
     [fetchCalories.pending]: (state, aciton) => {
-      state.calorieNeeds.isLoading = true;
+      state.calories.isLoading = true;
     },
     [fetchCalories.fulfilled]: (state, action) => {
-      state.calorieNeeds.weightLoss = action.payload.lowCalories;
-      state.calorieNeeds.weightGain = action.payload.highCalories;
-      state.calorieNeeds.maintain = action.payload.moderateCalories;
-      state.calorieNeeds.extremeWeightLoss = action.payload.superLowCalories;
-      console.log("fufilled", action.payload);
+      for (const key in action.payload) {
+        const stateIndex = state.calories.calorieNeeds.findIndex(
+          (need) => need.id.trim() === key
+        );
+
+        state.calories.calorieNeeds[stateIndex].value = action.payload[key];
+      }
     },
-    [fetchCalories.rejected]: (state, aciton) => {
-      state.bmi.error = true;
-      state.bmi.isLoading = false;
-      console.log(aciton.payload, "error");
-    },
+    [fetchCalories.rejected]: (state, aciton) => {},
   },
 });
 

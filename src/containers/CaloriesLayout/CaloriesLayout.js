@@ -5,10 +5,13 @@ import React from "react";
 import InfoBox from "../../components/InfoBox/InfoBox";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
-  const calorieNeeds = useSelector((state) => state.calorieNeeds);
+  const calorieNeeds = useSelector(
+    (state) => state.health.calories.calorieNeeds
+  );
   const handleFetchCalories = (info) => {
     dispatch(fetchCalories(info));
   };
+
   return (
     <React.Fragment>
       <h1> Calorie Needs</h1>
