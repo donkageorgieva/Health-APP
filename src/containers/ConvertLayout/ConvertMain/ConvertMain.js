@@ -53,16 +53,20 @@ const ConvertMain = (props) => {
 
       <InfoBox
         heading={
-          !convertedValue
+          !convertedValue[`${params.metric}s`]
             ? "How to use"
             : convertedValue[`${params.metric}s`] + ` ${params.metric}s`
         }
         info={
-          !convertedValue
-            ? `Provide value in ${opositeMetric}s and submit the form`
+          !convertedValue[`${params.metric}s`]
+            ? `Provide value in ${opositeMetric}s and submit the form.`
             : "Result"
         }
-        classes={"alert-warning"}
+        classes={
+          convertedValue[`${params.metric}s`]
+            ? "alert-success"
+            : "alert-warning"
+        }
       />
     </React.Fragment>
   );

@@ -55,7 +55,7 @@ const CaloriesLayout = () => {
                 return {
                   heading: need.name,
                   strongFirst: need.value,
-                  info: ` calories to reach your goal`,
+                  info: ` calories a day to reach your goal`,
                 };
               })
             : "How to use"

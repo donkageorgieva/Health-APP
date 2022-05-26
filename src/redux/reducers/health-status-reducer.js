@@ -11,21 +11,22 @@ const initialState = {
   calories: {
     calorieNeeds: [
       {
+        value: null,
+        name: "Fast Weightloss",
+        id: "superLowCalories",
+      },
+      {
         id: "lowCalories",
         value: null,
         name: "Weight Loss",
       },
-      { value: null, name: "Weight Gain", id: "highCalories" },
+
       {
         value: null,
         name: "Maintain Current Weight",
         id: "moderateCalories",
       },
-      {
-        value: null,
-        name: "Fast Weightloss",
-        id: "superLowCalories",
-      },
+      { value: null, name: "Weight Gain", id: "highCalories" },
     ],
     isLoading: false,
     error: false,

@@ -97,6 +97,11 @@ const Form = (props) => {
       <button type="submit" className="btn btn-primary my-4">
         Submit
       </button>
+      {props.infoButton && (
+        <button type="button" className="btn btn-secondary my-4">
+          {props.infoButton.text}
+        </button>
+      )}
     </form>
   );
 };
