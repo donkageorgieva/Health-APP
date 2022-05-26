@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import InfoBox from "../../../components/InfoBox/InfoBox";
 import Form from "../../Form/Form";
 import axios from "axios";
 const ConvertMain = (props) => {
@@ -14,6 +15,7 @@ const ConvertMain = (props) => {
       )
       .then((response) => {
         setConvertedValue(response.data);
+        console.log(convertedValue, "convrted");
       })
       .catch((err) => err);
   };
@@ -37,12 +39,6 @@ const ConvertMain = (props) => {
   }, [params.metric]);
   return (
     <React.Fragment>
-      <h1>
-        {" "}
-        {opositeMetric &&
-          opositeMetric[0].toUpperCase() + opositeMetric.slice(1)}{" "}
-        to {params.metric.slice(0, 1).toUpperCase() + params.metric.slice(1)}{" "}
-      </h1>
       <Form
         formData={{
           name: `${params.metric}`,
@@ -54,11 +50,20 @@ const ConvertMain = (props) => {
         }}
         fetchFnc={convertMetrics}
       />
-      {convertedValue ? (
-        <h1>{convertedValue[params.metric + "s"]}</h1>
-      ) : (
-        <h1>Please enter a value</h1>
-      )}
+
+      <InfoBox
+        heading={
+          !convertedValue
+            ? "How to use"
+            : convertedValue[`${params.metric}s`] + ` ${params.metric}s`
+        }
+        info={
+          !convertedValue
+            ? `Provide value in ${opositeMetric}s and submit the form`
+            : "Result"
+        }
+        classes={"alert-warning"}
+      />
     </React.Fragment>
   );
 };

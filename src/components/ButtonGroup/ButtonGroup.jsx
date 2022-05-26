@@ -4,7 +4,7 @@ const ButtonGroup = (props) => {
   const buttons = props.buttons.map((button) => (
     <NavLink
       type="button"
-      className="btn btn-secondary"
+      className="btn btn-secondary my-2"
       to={button.to}
       key={button.text}
     >
