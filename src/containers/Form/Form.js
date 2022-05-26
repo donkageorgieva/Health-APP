@@ -28,7 +28,6 @@ const Form = (props) => {
         inputData: updatedData,
       });
     } else {
-      console.log(value);
       const dataIndex = formData.selectData.findIndex(
         (data) => data.name === value.name
       );

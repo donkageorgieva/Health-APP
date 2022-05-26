@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import ButtonGroup from "../../components/ButtonGroup/ButtonGroup";
 
 const ConvertLayout = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate("lb");
-  }, []);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   navigate("lb");
+  // }, []);
   return (
     <React.Fragment>
       <ButtonGroup

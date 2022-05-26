@@ -12,7 +12,11 @@ const ButtonGroup = (props) => {
     </NavLink>
   ));
   return (
-    <div class="btn-group  btn-group-md" role="group" aria-label={props.label}>
+    <div
+      className="btn-group  btn-group-md"
+      role="group"
+      aria-label={props.label}
+    >
       {buttons}
     </div>
   );
