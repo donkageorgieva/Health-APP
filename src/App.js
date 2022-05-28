@@ -6,6 +6,7 @@ import CaloriesLayout from "./containers/CaloriesLayout/CaloriesLayout";
 import ConvertLayout from "./containers/ConvertLayout/ConvertLayout";
 import "./App.scss";
 import ConvertMain from "./containers/ConvertLayout/ConvertMain/ConvertMain";
+import Recipes from "./containers/CaloriesLayout/Recipes/RecipesLayout";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Routes>
             <Route path="/" element={<BMILayout />} />
             <Route path="calories" element={<CaloriesLayout />} />
+            <Route path="calories/recipes/:maxCalories" element={<Recipes />} />
+
             <Route path="convert" element={<ConvertLayout />}>
               <Route path=":metric" element={<ConvertMain />} />
             </Route>

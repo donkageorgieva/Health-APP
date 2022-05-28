@@ -54,8 +54,9 @@ const CaloriesLayout = () => {
           cards={calorieNeeds.map((need) => {
             return {
               cardTitle: need.name,
+              id: need.id,
               to: {
-                link: `recipes/${need.id.toLowerCase()} ${need.value}`,
+                link: `recipes/${need.value}`,
                 name: `Recipes`,
               },
               cardParagraph: `You need to eat `,

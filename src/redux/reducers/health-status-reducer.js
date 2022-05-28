@@ -26,7 +26,11 @@ const initialState = {
         name: "Maintain Current Weight",
         id: "moderateCalories",
       },
-      { value: null, name: "Weight Gain", id: "highCalories" },
+      {
+        value: null,
+        name: "Weight Gain",
+        id: "highCalories",
+      },
     ],
     isLoading: false,
     error: false,
