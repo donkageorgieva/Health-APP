@@ -1,0 +1,19 @@
+import Card from "./Card/Card";
+
+const CardGroup = (props) => {
+  console.log(props.cards, "cards recieved");
+  const cards = props.cards.map((card) => (
+    <Card
+      img={card.img && card.img}
+      cardTitle={card.cardTitle}
+      cardParagraph={card.cardParagraph}
+      strongFirst={card.strongFirst}
+      strongLast={card.strongLast}
+      afterStrong={card.afterStrong}
+      to={card.to}
+    />
+  ));
+  return <section className="card-group">{cards}</section>;
+};
+
+export default CardGroup;

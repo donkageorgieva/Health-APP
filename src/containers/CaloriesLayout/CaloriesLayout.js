@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "../Form/Form";
 import React from "react";
 import InfoBox from "../../components/InfoBox/InfoBox";
+import CardGroup from "../../components/CardGroup/CardGroup";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
   const calorieNeeds = useSelector(
@@ -48,24 +49,28 @@ const CaloriesLayout = () => {
           },
         ]}
       />
-      <InfoBox
-        heading={
-          calorieNeeds[0].value
-            ? calorieNeeds.map((need) => {
-                return {
-                  heading: need.name,
-                  strongFirst: need.value,
-                  info: ` calories a day to reach your goal`,
-                };
-              })
-            : "How to use"
-        }
-        info={
-          !calorieNeeds[0].value &&
-          "Fill in your health info and submit the form to display calorie needs. "
-        }
-        classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
-      />
+      {calorieNeeds[0].value && (
+        <CardGroup
+          cards={calorieNeeds.map((need) => {
+            return {
+              cardTitle: need.name,
+              to: {
+                link: `${need.value}`,
+                name: `Recipes`,
+              },
+              cardParagraph: `You need to eat`,
+              strongLast: need.value,
+              afterStrong: ` calories a day to reach your goal.`,
+            };
+          })}
+          width="15rem"
+          // info={
+          //   !calorieNeeds[0].value &&
+          //   "Fill in your health info and submit the form to display calorie needs. "
+          // }
+          // classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
+        />
+      )}
     </React.Fragment>
   );
 };

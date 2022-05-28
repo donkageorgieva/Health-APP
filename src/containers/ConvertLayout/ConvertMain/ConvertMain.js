@@ -58,7 +58,7 @@ const ConvertMain = (props) => {
         }
         info={
           !convertedValue || !convertedValue[`${params.metric}s`]
-            ? `Provide value in ${opositeMetric}s and submit the form.`
+            ? `Provide your value in ${opositeMetric}s and submit the form to display the value in ${params.metric}s.`
             : "Result"
         }
         classes={
