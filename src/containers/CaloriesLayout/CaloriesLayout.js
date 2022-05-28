@@ -55,10 +55,10 @@ const CaloriesLayout = () => {
             return {
               cardTitle: need.name,
               to: {
-                link: `${need.value}`,
+                link: `recipes/${need.id.toLowerCase()} ${need.value}`,
                 name: `Recipes`,
               },
-              cardParagraph: `You need to eat`,
+              cardParagraph: `You need to eat `,
               strongLast: need.value,
               afterStrong: ` calories a day to reach your goal.`,
             };

@@ -18,7 +18,7 @@ const initialState = {
       {
         id: "lowCalories",
         value: null,
-        name: "Weight Loss",
+        name: "Steady Weightloss",
       },
 
       {
