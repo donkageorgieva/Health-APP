@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBMI } from "./thunks/fetchBMI";
 import { fetchCalories } from "./thunks/fetchCalories";
+import { fetchRecipes } from "./thunks/fetchRecipes";
 const initialState = {
   bmi: {
     value: null,
@@ -35,8 +36,12 @@ const initialState = {
     isLoading: false,
     error: false,
   },
-  calorieGoal: null,
-  recipes: [],
+  nutrition: {
+    isLoading: false,
+    error: false,
+    recipes: [],
+    calorieGoal: null,
+  },
 };
 
 const healthSlice = createSlice({
@@ -102,6 +107,11 @@ const healthSlice = createSlice({
       }
     },
     [fetchCalories.rejected]: (state, aciton) => {},
+    [fetchRecipes.pending]: (state, action) => {},
+    [fetchRecipes.fulfilled]: (state, action) => {
+      console.log(action.payload);
+    },
+    [fetchRecipes.rejected]: (state, action) => {},
   },
 });
 

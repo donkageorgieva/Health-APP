@@ -11,7 +11,7 @@ const CardGroup = (props) => {
       strongFirst={card.strongFirst}
       strongLast={card.strongLast}
       afterStrong={card.afterStrong}
-      to={card.to}
+      button={card.button}
     />
   ));
   return <section className="card-group">{cards}</section>;

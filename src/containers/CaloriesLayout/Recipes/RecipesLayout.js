@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchRecipes } from "../../../redux/reducers/thunks/fetchRecipes";
 const Recipes = (props) => {
   const params = useParams();
-  console.log(params.calories / 5, "calories");
+  const dispatch = useDispatch();
+
+  console.log(params.calories / 5);
   return <h1>Your Recipes</h1>;
 };
 

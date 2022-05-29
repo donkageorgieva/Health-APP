@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Card = (props) => {
   return (
     <article className="card" style={{ width: props.width }}>
@@ -15,9 +13,9 @@ const Card = (props) => {
           {props.afterStrong && props.afterStrong}
         </p>
 
-        <Link to={props.to.link} className="btn btn-primary">
-          {props.to.name}
-        </Link>
+        <button onClick={props.button.onClick} className="btn btn-primary">
+          {props.button.name}
+        </button>
       </div>
     </article>
   );

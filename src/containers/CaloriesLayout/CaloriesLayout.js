@@ -1,14 +1,23 @@
 import { fetchCalories } from "../../redux/reducers/thunks/fetchCalories";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "../../components/Modal/Modal";
 import Form from "../Form/Form";
 import React from "react";
-import InfoBox from "../../components/InfoBox/InfoBox";
+// import InfoBox from "../../components/InfoBox/InfoBox";
 import CardGroup from "../../components/CardGroup/CardGroup";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
   const calorieNeeds = useSelector(
     (state) => state.health.calories.calorieNeeds
   );
+  const [modalConfig, setModalConfig] = useState({
+    show: false,
+    link: "/helo",
+    title: "Recipes",
+    name: "",
+    btnDisabled: true,
+  });
   const handleFetchCalories = (info) => {
     dispatch(fetchCalories(info));
   };
@@ -55,9 +64,16 @@ const CaloriesLayout = () => {
             return {
               cardTitle: need.name,
               id: need.id,
-              to: {
-                link: `recipes/${need.value}`,
+              button: {
                 name: `Recipes`,
+                onClick: (e) => {
+                  setModalConfig({
+                    ...modalConfig,
+                    show: !modalConfig.show,
+                    link: `recipes/${need.value}`,
+                    btnDisabled: true,
+                  });
+                },
               },
               cardParagraph: `You need to eat `,
               strongLast: need.value,
@@ -70,6 +86,15 @@ const CaloriesLayout = () => {
           //   "Fill in your health info and submit the form to display calorie needs. "
           // }
           // classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
+        />
+      )}
+      {modalConfig.show && (
+        <Modal
+          title={modalConfig.title}
+          to={{ link: modalConfig.link, name: modalConfig.name }}
+          close={(e) => {
+            setModalConfig({ ...modalConfig, show: false });
+          }}
         />
       )}
     </React.Fragment>
