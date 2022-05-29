@@ -1,7 +1,7 @@
 import { fetchCalories } from "../../redux/reducers/thunks/fetchCalories";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../containers/Modal/Modal";
 import Form from "../Form/Form";
 import React from "react";
 // import InfoBox from "../../components/InfoBox/InfoBox";
@@ -14,9 +14,8 @@ const CaloriesLayout = () => {
   const [modalConfig, setModalConfig] = useState({
     show: false,
     link: "/helo",
-    title: "Recipes",
-    name: "",
-    btnDisabled: true,
+    title: "Diet Preferences",
+    name: "Show Recipes",
   });
   const handleFetchCalories = (info) => {
     dispatch(fetchCalories(info));
@@ -66,12 +65,12 @@ const CaloriesLayout = () => {
               id: need.id,
               button: {
                 name: `Recipes`,
+
                 onClick: (e) => {
                   setModalConfig({
                     ...modalConfig,
                     show: !modalConfig.show,
                     link: `recipes/${need.value}`,
-                    btnDisabled: true,
                   });
                 },
               },
@@ -88,15 +87,16 @@ const CaloriesLayout = () => {
           // classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
         />
       )}
-      {modalConfig.show && (
+      {
         <Modal
           title={modalConfig.title}
+          show={modalConfig.show}
           to={{ link: modalConfig.link, name: modalConfig.name }}
           close={(e) => {
             setModalConfig({ ...modalConfig, show: false });
           }}
         />
-      )}
+      }
     </React.Fragment>
   );
 };

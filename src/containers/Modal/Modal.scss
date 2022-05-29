@@ -1,13 +1,23 @@
 .modal {
   position: fixed;
   display: block;
-  background-color: #00000091;
+
   transition: 0.5s ease-in-out;
   height: 100%;
+}
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.527);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
 }
 .hidden {
   height: 0;
   display: none;
+}
+.modal-dialog {
+  z-index: 200;
 }
 .show {
   height: 100%;
