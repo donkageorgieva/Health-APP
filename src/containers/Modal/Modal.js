@@ -5,14 +5,14 @@ const Modal = (props) => {
   return (
     <React.Fragment>
       <div
-        className={`modal ${!props.show && "hidden"}`}
+        className="modal"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="recipeModal"
       >
         <div className="backdrop" onClick={props.close}></div>
         <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className={`modal-content ${!props.show && "hidden"}`}>
+          <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">{props.title}</h5>
               <button
@@ -20,6 +20,7 @@ const Modal = (props) => {
                 className="close "
                 data-dismiss="modal"
                 aria-label="Close"
+                onClick={props.close}
               >
                 <span aria-hidden="true">&times;</span>
               </button>

@@ -87,16 +87,16 @@ const CaloriesLayout = () => {
           // classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
         />
       )}
-      {
+      {modalConfig.show && (
         <Modal
           title={modalConfig.title}
-          show={modalConfig.show}
           to={{ link: modalConfig.link, name: modalConfig.name }}
           close={(e) => {
+            console.log(e.target);
             setModalConfig({ ...modalConfig, show: false });
           }}
         />
-      }
+      )}
     </React.Fragment>
   );
 };
