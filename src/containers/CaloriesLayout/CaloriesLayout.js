@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../containers/Modal/Modal";
 import Form from "../Form/Form";
 import React from "react";
-// import InfoBox from "../../components/InfoBox/InfoBox";
+import InfoBox from "../../components/InfoBox/InfoBox";
 import CardGroup from "../../components/CardGroup/CardGroup";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const CaloriesLayout = () => {
           },
         ]}
       />
-      {calorieNeeds[0].value && (
+      {calorieNeeds[0].value ? (
         <CardGroup
           cards={calorieNeeds.map((need) => {
             return {
@@ -80,13 +80,15 @@ const CaloriesLayout = () => {
             };
           })}
           width="15rem"
-          // info={
-          //   !calorieNeeds[0].value &&
-          //   "Fill in your health info and submit the form to display calorie needs. "
-          // }
-          // classes={calorieNeeds[0].value ? "alert-success" : "alert-warning"}
+        />
+      ) : (
+        <InfoBox
+          heading="How to use"
+          info="Fill in your health info and submit the form to display calorie needs. "
+          classes="alert-warning"
         />
       )}
+
       {modalConfig.show && (
         <Modal
           title={modalConfig.title}
