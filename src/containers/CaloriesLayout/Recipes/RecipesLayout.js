@@ -6,7 +6,7 @@ const Recipes = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  console.log(params.calories / 5);
+  console.log(params);
   return <h1>Your Recipes</h1>;
 };
 

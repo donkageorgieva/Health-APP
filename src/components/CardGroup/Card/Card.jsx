@@ -1,6 +1,6 @@
 const Card = (props) => {
   return (
-    <article className="card" style={{ width: props.width }}>
+    <article className="card border" style={{ width: props.width }}>
       {props.img && (
         <img className="card-img-top" src={props.img.src} alt={props.img.alt} />
       )}

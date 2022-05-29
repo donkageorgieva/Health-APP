@@ -14,7 +14,7 @@ const CardGroup = (props) => {
       button={card.button}
     />
   ));
-  return <section className="card-group">{cards}</section>;
+  return <section className="card-group gap-3">{cards}</section>;
 };
 
 export default CardGroup;

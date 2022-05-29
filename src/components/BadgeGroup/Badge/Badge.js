@@ -4,7 +4,7 @@ const Badge = (props) => {
   const [badgeClass, setBadgeClass] = useState("badge-light");
   return (
     <button
-      className={`badge badge-pill ${badgeClass}`}
+      className={`badge badge-pill ${props.badgeClass}`}
       onClick={(e) => {
         props.badgeClicked(e.target.textContent.toLowerCase());
         if (badgeClass === "badge-light") {
