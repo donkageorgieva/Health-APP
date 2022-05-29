@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BadgeGroup from "../../components/BadgeGroup/BadgeGroup";
 
 const Modal = (props) => {
   return (
@@ -27,6 +28,7 @@ const Modal = (props) => {
             </div>
             <div className="modal-body">
               <p>{props.body}</p>
+              {props.badges && <BadgeGroup badges={props.badges} />}
             </div>
             <div className="modal-footer">
               <Link to={props.to.link} className="btn btn-primary">

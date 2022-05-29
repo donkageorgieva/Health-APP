@@ -97,6 +97,27 @@ const CaloriesLayout = () => {
             console.log(e.target);
             setModalConfig({ ...modalConfig, show: false });
           }}
+          body="Sselect any dietary preferences"
+          badges={[
+            {
+              onClick: (val) => {
+                console.log(val);
+              },
+              text: "Vegan",
+            },
+            {
+              onClick: (val) => {
+                console.log(val);
+              },
+              text: "Vegeterian",
+            },
+            {
+              onClick: (val) => {
+                console.log(val);
+              },
+              text: "Pescaterian",
+            },
+          ]}
         />
       )}
     </React.Fragment>
