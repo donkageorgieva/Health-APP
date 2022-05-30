@@ -23,16 +23,18 @@ const Recipes = (props) => {
       {recipes && (
         <CardGroup
           cards={recipes.map((recipe) => {
-            return {
-              img: recipe.image.url,
-              subtitle:
-                ((recipe.calories / recipe.weight) * 100).toFixed(2) +
-                ` kcal per serving (${recipe.mealType})`,
-              list: recipe.ingredientLines,
-              cardTitle: recipe.label,
-              width: "15rem",
-              listName: "Ingredients",
-            };
+            if (recipe !== undefined) {
+              return {
+                img: recipe.image,
+                subtitle:
+                  ((recipe.calories / recipe.weight) * 100).toFixed(2) +
+                  ` kcal per serving (${recipe.mealType})`,
+                list: recipe.ingredientLines,
+                cardTitle: recipe.label,
+                width: "15rem",
+                listName: "Ingredients",
+              };
+            }
           })}
         />
       )}

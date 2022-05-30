@@ -70,7 +70,7 @@ const CaloriesLayout = () => {
                   name: `Recipes`,
 
                   onClick: () => {
-                    console.log(need.name);
+                    console.log();
                     setModalConfig({
                       ...modalConfig,
                       show: !modalConfig.show,

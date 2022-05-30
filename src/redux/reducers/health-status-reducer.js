@@ -113,7 +113,11 @@ const healthSlice = createSlice({
           ingredients: hit.recipe.ingredients,
           mealType: hit.recipe.mealType,
           label: hit.recipe.label,
-          image: hit.recipe.images.LARGE,
+          image: hit.recipe.images.LARGE
+            ? hit.recipe.images.LARGE.url
+            : hit.recipe.images.REGULAR
+            ? hit.recipe.images.REGULAR.url
+            : hit.recipe.images.THUMBNAIL.url,
           weight: hit.recipe.totalWeight.toFixed(2),
         };
       });
