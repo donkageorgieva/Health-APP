@@ -114,6 +114,7 @@ const healthSlice = createSlice({
           mealType: hit.recipe.mealType,
           label: hit.recipe.label,
           image: hit.recipe.images.LARGE,
+          weight: hit.recipe.totalWeight.toFixed(2),
         };
       });
       console.log(action.payload);

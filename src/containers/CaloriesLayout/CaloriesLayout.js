@@ -73,7 +73,7 @@ const CaloriesLayout = () => {
                     setModalConfig({
                       ...modalConfig,
                       show: !modalConfig.show,
-                      link: `recipes/${need.value}/`,
+                      link: `recipes/${need.value}/&pescatarian&vegan&vegetarian`,
                     });
                   },
                 },
@@ -100,7 +100,6 @@ const CaloriesLayout = () => {
           title={modalConfig.title}
           to={{ link: modalConfig.link, name: modalConfig.name }}
           close={(e) => {
-            console.log(e.target);
             setModalConfig({ ...modalConfig, show: false });
           }}
           body="Sselect any dietary preferences"

@@ -25,7 +25,9 @@ const Recipes = (props) => {
           cards={recipes.map((recipe) => {
             return {
               img: recipe.image.url,
-              subtitle: recipe.calories.toFixed(2) + " calories",
+              subtitle:
+                ((recipe.calories / recipe.weight) * 100).toFixed(2) +
+                ` kcal per serving (${recipe.mealType})`,
               list: recipe.ingredientLines,
               cardTitle: recipe.label,
               width: "15rem",
