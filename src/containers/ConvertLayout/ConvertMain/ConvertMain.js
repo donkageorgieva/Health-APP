@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import InfoBox from "../../../components/InfoBox/InfoBox";
 import Form from "../../Form/Form";
+import Spinner from "../../../components/Spinner/Spinner";
 import axios from "axios";
 const ConvertMain = (props) => {
   const params = useParams();
   const [convertedValue, setConvertedValue] = useState(null);
   const [opositeMetric, setOpositeMetric] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const convertMetrics = (value) => {
+    setIsLoading(true);
     axios
       .get(
         `https://convert-metrics-rest-api.herokuapp.com/to-${params.metric}/${value}`
       )
       .then((response) => {
         setConvertedValue(response.data);
-        console.log(convertedValue, "convrted");
+        setIsLoading(false);
       })
       .catch((err) => err);
   };
@@ -50,23 +53,27 @@ const ConvertMain = (props) => {
         fetchFnc={convertMetrics}
       />
 
-      <InfoBox
-        heading={
-          !convertedValue || !convertedValue[`${params.metric}s`]
-            ? "How to use"
-            : convertedValue[`${params.metric}s`] + ` ${params.metric}s`
-        }
-        info={
-          !convertedValue || !convertedValue[`${params.metric}s`]
-            ? `Provide your value in ${opositeMetric}s and submit the form to display the value in ${params.metric}s.`
-            : "Result"
-        }
-        classes={
-          convertedValue && convertedValue[`${params.metric}s`]
-            ? "alert-success"
-            : "alert-warning"
-        }
-      />
+      {!isLoading ? (
+        <InfoBox
+          heading={
+            !convertedValue || !convertedValue[`${params.metric}s`]
+              ? "How to use"
+              : convertedValue[`${params.metric}s`] + ` ${params.metric}s`
+          }
+          info={
+            !convertedValue || !convertedValue[`${params.metric}s`]
+              ? `Provide your value in ${opositeMetric}s and submit the form to display the value in ${params.metric}s.`
+              : "Result"
+          }
+          classes={
+            convertedValue && convertedValue[`${params.metric}s`]
+              ? "alert-success"
+              : "alert-warning"
+          }
+        />
+      ) : (
+        <Spinner />
+      )}
     </React.Fragment>
   );
 };

@@ -105,11 +105,22 @@ const healthSlice = createSlice({
 
         state.calories.calorieNeeds[stateIndex].value = action.payload[key];
       }
+      state.calories.isLoading = false;
     },
     [fetchCalories.rejected]: (state, aciton) => {},
     [fetchRecipes.pending]: (state, action) => {},
     [fetchRecipes.fulfilled]: (state, action) => {
-      console.log(action.payload);
+      state.nutrition.isLoading = false;
+      state.nutrition.recipes = action.payload.hits.map((hit) => {
+        return {
+          calories: hit.recipe.calories,
+          healthLabels: hit.recipe.healthLabels,
+          cautions: hit.recipe.cautions,
+          ingredientLines: hit.recipe.ingredientLines,
+          ingredients: hit.recipe.ingredients,
+          mealType: hit.recipe.mealType,
+        };
+      });
     },
     [fetchRecipes.rejected]: (state, action) => {},
   },

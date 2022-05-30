@@ -6,11 +6,13 @@ import Form from "../Form/Form";
 import React from "react";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import CardGroup from "../../components/CardGroup/CardGroup";
+import Spinner from "../../components/Spinner/Spinner";
 const CaloriesLayout = () => {
   const dispatch = useDispatch();
   const calorieNeeds = useSelector(
     (state) => state.health.calories.calorieNeeds
   );
+  const calories = useSelector((state) => state.health.calories);
   const [modalConfig, setModalConfig] = useState({
     show: false,
     link: "recipes/",
@@ -57,36 +59,40 @@ const CaloriesLayout = () => {
           },
         ]}
       />
-      {calorieNeeds[0].value ? (
-        <CardGroup
-          cards={calorieNeeds.map((need) => {
-            return {
-              cardTitle: need.name,
-              id: need.id,
-              button: {
-                name: `Recipes`,
+      {!calories.isLoading ? (
+        calorieNeeds[0].value ? (
+          <CardGroup
+            cards={calorieNeeds.map((need) => {
+              return {
+                cardTitle: need.name,
+                id: need.id,
+                button: {
+                  name: `Recipes`,
 
-                onClick: (e) => {
-                  setModalConfig({
-                    ...modalConfig,
-                    show: !modalConfig.show,
-                    link: `recipes/${need.value}/`,
-                  });
+                  onClick: (e) => {
+                    setModalConfig({
+                      ...modalConfig,
+                      show: !modalConfig.show,
+                      link: `recipes/${need.value}/`,
+                    });
+                  },
                 },
-              },
-              cardParagraph: `You need to eat `,
-              strongLast: need.value,
-              afterStrong: ` calories a day to reach your goal.`,
-            };
-          })}
-          width="15rem"
-        />
+                cardParagraph: `You need to eat `,
+                strongLast: need.value,
+                afterStrong: ` calories a day to reach your goal.`,
+              };
+            })}
+            width="15rem"
+          />
+        ) : (
+          <InfoBox
+            heading="How to use"
+            info="Fill in your health info and submit the form to display calorie needs. "
+            classes="alert-warning"
+          />
+        )
       ) : (
-        <InfoBox
-          heading="How to use"
-          info="Fill in your health info and submit the form to display calorie needs. "
-          classes="alert-warning"
-        />
+        <Spinner />
       )}
 
       {modalConfig.show && (
@@ -142,7 +148,7 @@ const CaloriesLayout = () => {
                   link: newString.join(""),
                 });
               },
-              text: "Pescaterian",
+              text: "Pescatarian",
             },
           ]}
         />
