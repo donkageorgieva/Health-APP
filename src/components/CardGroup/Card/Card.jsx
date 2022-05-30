@@ -2,7 +2,6 @@ import React from "react";
 import "./Card.scss";
 
 const Card = (props) => {
-  console.log(props.subtitle, "PROPS list");
   return (
     <article className="card border" style={{ width: props.width }}>
       {props.img && (
@@ -10,7 +9,7 @@ const Card = (props) => {
       )}
       <div className="card-header">
         <h5 className="card-title">{props.cardTitle}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{props.subtitle}</h6>
+        <h6 className="card-subtitle mb-2 text-muted">{props.subtitle}</h6>
       </div>
       <div className="card-body">
         <p className="card-text">

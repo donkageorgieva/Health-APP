@@ -1,12 +1,12 @@
 import Card from "./Card/Card";
 
 const CardGroup = (props) => {
-  console.log(props.cards, "cards recieved");
   const cards = props.cards.map((card) => (
     <Card
-      key={card.id}
+      key={card.cardTitle}
       img={card.img && card.img}
       cardTitle={card.cardTitle}
+      onClick={props.onClick}
       cardParagraph={card.cardParagraph}
       strongFirst={card.strongFirst}
       strongLast={card.strongLast}
