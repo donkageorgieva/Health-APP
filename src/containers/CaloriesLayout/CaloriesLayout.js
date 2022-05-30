@@ -105,12 +105,11 @@ const CaloriesLayout = () => {
                 if (shouldRemove) {
                   newString = newString.filter((str) => str !== val);
                 } else {
-                  console.log("else");
                   newString.push(val);
                 }
                 setModalConfig({
                   ...modalConfig,
-                  link: newString.join(" "),
+                  link: newString.join(""),
                 });
               },
               text: "Vegan",
@@ -121,15 +120,14 @@ const CaloriesLayout = () => {
                 if (shouldRemove) {
                   newString = newString.filter((str) => str !== val);
                 } else {
-                  console.log("else");
                   newString.push(val);
                 }
                 setModalConfig({
                   ...modalConfig,
-                  link: newString.join(" "),
+                  link: newString.join(""),
                 });
               },
-              text: "Vegeterian",
+              text: "Vegetarian",
             },
             {
               onClick: (val, shouldRemove = false) => {
@@ -137,12 +135,11 @@ const CaloriesLayout = () => {
                 if (shouldRemove) {
                   newString = newString.filter((str) => str !== val);
                 } else {
-                  console.log("else");
                   newString.push(val);
                 }
                 setModalConfig({
                   ...modalConfig,
-                  link: newString.join(" "),
+                  link: newString.join(""),
                 });
               },
               text: "Pescaterian",

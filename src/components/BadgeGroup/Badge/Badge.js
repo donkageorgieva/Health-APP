@@ -8,10 +8,10 @@ const Badge = (props) => {
       onClick={(e) => {
         if (badgeClass === "badge-light") {
           setBadgeClass("badge-primary");
-          props.badgeClicked(e.target.textContent.toLowerCase());
+          props.badgeClicked(` &${e.target.textContent.toLowerCase()}`);
         } else {
           setBadgeClass("badge-light");
-          props.badgeClicked(e.target.textContent.toLowerCase(), true);
+          props.badgeClicked(` &${e.target.textContent.toLowerCase()}`);
         }
       }}
     >

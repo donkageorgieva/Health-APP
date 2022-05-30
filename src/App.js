@@ -24,7 +24,7 @@ function App() {
             <Route path="/" element={<BMILayout />} />
             <Route path="calories" element={<CaloriesLayout />} />
             <Route
-              path="calories/recipes/:query/:healthStatus"
+              path="calories/recipes/:calories/:health"
               element={<Recipes />}
             />
 
