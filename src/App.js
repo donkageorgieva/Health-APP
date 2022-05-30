@@ -1,21 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
 import BMILayout from "./containers/BMILayout/BMILayout";
-import Header from "./components/Header/Header";
 import CaloriesLayout from "./containers/CaloriesLayout/CaloriesLayout";
 import ConvertLayout from "./containers/ConvertLayout/ConvertLayout";
 import "./App.scss";
 import ConvertMain from "./containers/ConvertLayout/ConvertMain/ConvertMain";
 import Recipes from "./containers/CaloriesLayout/Recipes/RecipesLayout";
+import Nav from "./containers/Nav/Nav";
 
 function App() {
-  useEffect(() => {
-    
-  }, []);
   return (
     <div className="App">
-      <Header
+      <Nav
         navLinks={[
           { name: "BMI Calculator", to: "/" },
           { name: "Calorie Calculator", to: "/calories" },

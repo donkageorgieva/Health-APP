@@ -13,9 +13,9 @@ const Card = (props) => {
           {props.afterStrong && props.afterStrong}
         </p>
 
-        <button onClick={props.button.onClick} className="btn btn-primary">
+        {props.button && <button onClick={props.button.onClick} className="btn btn-primary">
           {props.button.name}
-        </button>
+        </button>}
       </div>
     </article>
   );

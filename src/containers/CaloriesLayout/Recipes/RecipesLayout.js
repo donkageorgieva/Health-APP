@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { fetchRecipes } from "../../../redux/reducers/thunks/fetchRecipes";
+import CardGroup from "../../../components/CardGroup/CardGroup";
 const Recipes = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
+  const recipes = useSelector((state) => state.health.nutrition.recipes);
+
   // useEffect(() => {
   //   dispatch(
   //     fetchRecipes({
@@ -14,7 +17,19 @@ const Recipes = (props) => {
   //   );
   // }, [dispatch, params.calories, params.health]);
 
-  return <h1>Your Recipes</h1>;
+  // const recipeComponents = recipes.map((recipe) => <li>{recipe.label}</li>);
+  return (
+    <React.Fragment>
+      <h1>Your Recipes</h1>
+      <CardGroup
+        cards={recipes.map((recipe) => {
+          return {
+            img: recipe.image,
+          };
+        })}
+      />
+    </React.Fragment>
+  );
 };
 
 export default Recipes;

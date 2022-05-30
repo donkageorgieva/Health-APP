@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-const Header = (props) => {
-  console.log(props.navLinks, "links");
+import "./Nav.scss";
+const Nav = (props) => {
+  const [showMenu, setShowMenu] = useState(false);
   const navbarLinks = props.navLinks.map((link) => {
     return (
       <li className="nav-item" key={link.name + link.to}>
@@ -23,10 +24,21 @@ const Header = (props) => {
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            onClick={(e) => {
+              setShowMenu(!showMenu);
+              console.log("setting menu", showMenu);
+            }}
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div
+            className={
+              showMenu
+                ? "navbar-collapse collapse show"
+                : "navbar-collapse collapse"
+            }
+            id="navbarNav"
+          >
             <ul className="navbar-nav">{navbarLinks}</ul>
           </div>
         </div>
@@ -35,4 +47,6 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+//"collapse navbar-collapse"
+
+export default Nav;

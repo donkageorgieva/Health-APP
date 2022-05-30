@@ -11,7 +11,7 @@ const CardGroup = (props) => {
       strongFirst={card.strongFirst}
       strongLast={card.strongLast}
       afterStrong={card.afterStrong}
-      button={card.button}
+      button={card.button && card.button}
     />
   ));
   return <section className="card-group gap-3">{cards}</section>;

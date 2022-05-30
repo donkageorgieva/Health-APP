@@ -67,13 +67,6 @@ const healthSlice = createSlice({
           state.calorieGoal = state.calories.maintain;
           break;
         default:
-          if (state.bmi.bmiRange.toLowerCase() === "healthy") {
-            state.calorieGoal = state.calories.maintain;
-          } else if (state.bmi.bmiRange.toLowerCase() === "underweight") {
-            state.calorieGoal = state.calories.weightGain;
-          } else if (state.bmi.bmiRange.toLowerCase() === "overweight") {
-            state.calorieGoal = state.calories.weightLoss;
-          }
           break;
       }
     },
@@ -119,8 +112,11 @@ const healthSlice = createSlice({
           ingredientLines: hit.recipe.ingredientLines,
           ingredients: hit.recipe.ingredients,
           mealType: hit.recipe.mealType,
+          label: hit.recipe.label,
+          image: hit.recipe.images.LARGE,
         };
       });
+      console.log(action.payload);
     },
     [fetchRecipes.rejected]: (state, action) => {},
   },
