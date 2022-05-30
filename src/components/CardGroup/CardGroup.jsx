@@ -12,9 +12,17 @@ const CardGroup = (props) => {
       strongLast={card.strongLast}
       afterStrong={card.afterStrong}
       button={card.button && card.button}
+      width={props.width}
+      list={card.list && card.list}
+      listName={card.list && card.listName}
+      subtitle={card.subtitle && card.subtitle}
     />
   ));
-  return <section className="card-group gap-3">{cards}</section>;
+  return (
+    <section className="card-group gap-3  justify-content-center">
+      {cards}
+    </section>
+  );
 };
 
 export default CardGroup;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Nav.scss";
+
 const Nav = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const navbarLinks = props.navLinks.map((link) => {

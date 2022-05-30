@@ -8,26 +8,32 @@ const Recipes = (props) => {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.health.nutrition.recipes);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     fetchRecipes({
-  //       calories: params.calories,
-  //       health: params.health.split(" ").join("").slice(1),
-  //     })
-  //   );
-  // }, [dispatch, params.calories, params.health]);
+  useEffect(() => {
+    dispatch(
+      fetchRecipes({
+        calories: params.calories,
+        health: params.health.split(" ").join("").slice(1),
+      })
+    );
+  }, [dispatch, params.calories, params.health]);
 
-  // const recipeComponents = recipes.map((recipe) => <li>{recipe.label}</li>);
   return (
     <React.Fragment>
-      <h1>Your Recipes</h1>
-      <CardGroup
-        cards={recipes.map((recipe) => {
-          return {
-            img: recipe.image,
-          };
-        })}
-      />
+      <h1 className="text-center py-5">Your Recipes</h1>
+      {recipes && (
+        <CardGroup
+          cards={recipes.map((recipe) => {
+            return {
+              img: recipe.image.url,
+              subtitle: recipe.calories.toFixed(2) + " calories",
+              list: recipe.ingredientLines,
+              cardTitle: recipe.label,
+              width: "15rem",
+              listName: "Ingredients",
+            };
+          })}
+        />
+      )}
     </React.Fragment>
   );
 };
