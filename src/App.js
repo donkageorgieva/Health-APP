@@ -23,7 +23,10 @@ function App() {
           <Routes>
             <Route path="/" element={<BMILayout />} />
             <Route path="calories" element={<CaloriesLayout />} />
-            <Route path="calories/recipes/:query" element={<Recipes />} />
+            <Route
+              path="calories/recipes/:query/:healthStatus"
+              element={<Recipes />}
+            />
 
             <Route path="convert" element={<ConvertLayout />}>
               <Route path=":metric" element={<ConvertMain />} />

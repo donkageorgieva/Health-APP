@@ -6,7 +6,7 @@ const Recipes = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  console.log(params);
+  console.log(params.healthStatus.split(" "));
   return <h1>Your Recipes</h1>;
 };
 

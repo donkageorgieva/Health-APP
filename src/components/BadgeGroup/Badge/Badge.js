@@ -4,11 +4,11 @@ const Badge = (props) => {
   const [badgeClass, setBadgeClass] = useState("badge-light");
   return (
     <button
-      className={`badge badge-pill ${props.badgeClass}`}
+      className={`badge badge-pill ${badgeClass}`}
       onClick={(e) => {
-        props.badgeClicked(e.target.textContent.toLowerCase());
         if (badgeClass === "badge-light") {
           setBadgeClass("badge-primary");
+          props.badgeClicked(e.target.textContent.toLowerCase());
         } else {
           setBadgeClass("badge-light");
         }

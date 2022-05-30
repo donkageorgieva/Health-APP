@@ -13,7 +13,7 @@ const CaloriesLayout = () => {
   );
   const [modalConfig, setModalConfig] = useState({
     show: false,
-    link: "/helo",
+    link: "recipes/",
     title: "Diet Preferences",
     name: "Show Recipes",
   });
@@ -70,7 +70,7 @@ const CaloriesLayout = () => {
                   setModalConfig({
                     ...modalConfig,
                     show: !modalConfig.show,
-                    link: `recipes/${need.value}`,
+                    link: `recipes/${need.value}/`,
                   });
                 },
               },
@@ -101,19 +101,49 @@ const CaloriesLayout = () => {
           badges={[
             {
               onClick: (val) => {
-                console.log(val);
+                const newString = modalConfig.link.split(" ");
+                const exists = newString.find((str) => str === val);
+                if (exists) {
+                  return;
+                }
+                newString.push(val);
+                console.log(newString.join(" "));
+                setModalConfig({
+                  ...modalConfig,
+                  link: newString.join(" "),
+                });
               },
               text: "Vegan",
             },
             {
               onClick: (val) => {
-                console.log(val);
+                const newString = modalConfig.link.split(" ");
+                const exists = newString.find((str) => str === val);
+                if (exists) {
+                  return;
+                }
+                newString.push(val);
+                console.log(newString.join(" "));
+                setModalConfig({
+                  ...modalConfig,
+                  link: newString.join(" "),
+                });
               },
               text: "Vegeterian",
             },
             {
               onClick: (val) => {
-                console.log(val);
+                const newString = modalConfig.link.split(" ");
+                const exists = newString.find((str) => str === val);
+                if (exists) {
+                  return;
+                }
+                newString.push(val);
+                console.log(newString.join(" "));
+                setModalConfig({
+                  ...modalConfig,
+                  link: newString.join(" "),
+                });
               },
               text: "Pescaterian",
             },
