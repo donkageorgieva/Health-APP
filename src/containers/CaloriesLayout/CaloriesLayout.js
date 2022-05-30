@@ -100,14 +100,14 @@ const CaloriesLayout = () => {
           body="Sselect any dietary preferences"
           badges={[
             {
-              onClick: (val) => {
-                const newString = modalConfig.link.split(" ");
-                const exists = newString.find((str) => str === val);
-                if (exists) {
-                  return;
+              onClick: (val, shouldRemove = false) => {
+                let newString = modalConfig.link.split(" ");
+                if (shouldRemove) {
+                  newString = newString.filter((str) => str !== val);
+                } else {
+                  console.log("else");
+                  newString.push(val);
                 }
-                newString.push(val);
-                console.log(newString.join(" "));
                 setModalConfig({
                   ...modalConfig,
                   link: newString.join(" "),
@@ -116,14 +116,14 @@ const CaloriesLayout = () => {
               text: "Vegan",
             },
             {
-              onClick: (val) => {
-                const newString = modalConfig.link.split(" ");
-                const exists = newString.find((str) => str === val);
-                if (exists) {
-                  return;
+              onClick: (val, shouldRemove = false) => {
+                let newString = modalConfig.link.split(" ");
+                if (shouldRemove) {
+                  newString = newString.filter((str) => str !== val);
+                } else {
+                  console.log("else");
+                  newString.push(val);
                 }
-                newString.push(val);
-                console.log(newString.join(" "));
                 setModalConfig({
                   ...modalConfig,
                   link: newString.join(" "),
@@ -132,14 +132,14 @@ const CaloriesLayout = () => {
               text: "Vegeterian",
             },
             {
-              onClick: (val) => {
-                const newString = modalConfig.link.split(" ");
-                const exists = newString.find((str) => str === val);
-                if (exists) {
-                  return;
+              onClick: (val, shouldRemove = false) => {
+                let newString = modalConfig.link.split(" ");
+                if (shouldRemove) {
+                  newString = newString.filter((str) => str !== val);
+                } else {
+                  console.log("else");
+                  newString.push(val);
                 }
-                newString.push(val);
-                console.log(newString.join(" "));
                 setModalConfig({
                   ...modalConfig,
                   link: newString.join(" "),

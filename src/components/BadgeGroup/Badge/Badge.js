@@ -11,6 +11,7 @@ const Badge = (props) => {
           props.badgeClicked(e.target.textContent.toLowerCase());
         } else {
           setBadgeClass("badge-light");
+          props.badgeClicked(e.target.textContent.toLowerCase(), true);
         }
       }}
     >
