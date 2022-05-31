@@ -15,17 +15,39 @@ const CaloriesLayout = () => {
   const calories = useSelector((state) => state.health.calories);
   const [modalConfig, setModalConfig] = useState({
     show: false,
-    link: "recipes/",
+    base: "recipes/",
+    optional: " ",
     title: "Diet Preferences",
     name: "Show Recipes",
   });
   const handleFetchCalories = (info) => {
     dispatch(fetchCalories(info));
   };
+  const handleShowRecipes = (val, shouldRemove = false) => {
+    let newString = modalConfig.optional.trim(" ").split("&");
 
+    newString = newString.filter((str) => str !== val);
+
+    if (!shouldRemove) {
+      newString.push(val.trim(" "));
+    }
+
+    newString = newString.map((str, index) => {
+      if (index !== 0) {
+        return (str = `&${str.trim(" ")}`);
+      } else {
+        return "";
+      }
+    });
+
+    setModalConfig({
+      ...modalConfig,
+      optional: newString.join("").trim(" "),
+    });
+  };
   return (
     <React.Fragment>
-      <h1> Calorie Needs</h1>
+      <h1 className="pb-2"> Calorie Needs</h1>
       <Form
         formData={[
           { name: "age", value: "", type: "number" },
@@ -70,11 +92,11 @@ const CaloriesLayout = () => {
                   name: `Recipes`,
 
                   onClick: () => {
-                    console.log();
                     setModalConfig({
                       ...modalConfig,
                       show: !modalConfig.show,
-                      link: `recipes/${need.value}/&pescatarian&vegan&vegetarian`,
+                      base: `recipes/${need.value}/`,
+                      optional: ` `,
                     });
                   },
                 },
@@ -99,55 +121,25 @@ const CaloriesLayout = () => {
       {modalConfig.show && (
         <Modal
           title={modalConfig.title}
-          to={{ link: modalConfig.link, name: modalConfig.name }}
+          to={{
+            link: modalConfig.base + modalConfig.optional.slice(1),
+            name: modalConfig.name,
+          }}
           close={(e) => {
             setModalConfig({ ...modalConfig, show: false });
           }}
-          body="Sselect any dietary preferences"
+          body="Select any dietary preferences"
           badges={[
             {
-              onClick: (val, shouldRemove = false) => {
-                let newString = modalConfig.link.split(" ");
-                if (shouldRemove) {
-                  newString = newString.filter((str) => str !== val);
-                } else {
-                  newString.push(val);
-                }
-                setModalConfig({
-                  ...modalConfig,
-                  link: newString.join(""),
-                });
-              },
+              onClick: handleShowRecipes,
               text: "Vegan",
             },
             {
-              onClick: (val, shouldRemove = false) => {
-                let newString = modalConfig.link.split(" ");
-                if (shouldRemove) {
-                  newString = newString.filter((str) => str !== val);
-                } else {
-                  newString.push(val);
-                }
-                setModalConfig({
-                  ...modalConfig,
-                  link: newString.join(""),
-                });
-              },
+              onClick: handleShowRecipes,
               text: "Vegetarian",
             },
             {
-              onClick: (val, shouldRemove = false) => {
-                let newString = modalConfig.link.split(" ");
-                if (shouldRemove) {
-                  newString = newString.filter((str) => str !== val);
-                } else {
-                  newString.push(val);
-                }
-                setModalConfig({
-                  ...modalConfig,
-                  link: newString.join(""),
-                });
-              },
+              onClick: handleShowRecipes,
               text: "Pescatarian",
             },
           ]}

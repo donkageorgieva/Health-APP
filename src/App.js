@@ -19,10 +19,11 @@ function App() {
         ]}
       />
       <div className="container">
-        <main className="pt-5">
+        <main className="py-5 my-2">
           <Routes>
             <Route path="/" element={<BMILayout />} />
             <Route path="calories" element={<CaloriesLayout />} />
+            
             <Route
               path="calories/recipes/:calories/:health"
               element={<Recipes />}

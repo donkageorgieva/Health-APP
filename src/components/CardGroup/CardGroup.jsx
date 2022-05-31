@@ -19,7 +19,7 @@ const CardGroup = (props) => {
     />
   ));
   return (
-    <section className="card-group gap-3  justify-content-center">
+    <section className="card-group gap-3  justify-content-center py-2">
       {cards}
     </section>
   );

@@ -12,7 +12,7 @@ const Recipes = (props) => {
     dispatch(
       fetchRecipes({
         calories: params.calories,
-        health: params.health.split(" ").join("").slice(1),
+        health: params.health,
       })
     );
   }, [dispatch, params.calories, params.health]);

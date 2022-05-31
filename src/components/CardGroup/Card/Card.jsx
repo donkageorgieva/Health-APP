@@ -3,7 +3,7 @@ import "./Card.scss";
 
 const Card = (props) => {
   return (
-    <article className="card border" style={{ width: props.width }}>
+    <article className="card border" style={{ minWidth: props.width }}>
       {props.img && (
         <img className="card-img-top" src={props.img} alt={props.img.alt} />
       )}

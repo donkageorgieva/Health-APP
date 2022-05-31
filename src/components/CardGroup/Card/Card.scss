@@ -1,13 +1,11 @@
 .card {
   min-width: 20%;
   .card-header {
-    height: 8rem;
+    min-height: 8rem;
+
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-  }
-  .card-title {
-    text-align: center;
   }
 }
