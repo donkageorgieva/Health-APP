@@ -19,7 +19,6 @@ const Recipes = (props) => {
 
   return (
     <React.Fragment>
-      <h1 className="text-center py-5">Your Recipes</h1>
       {recipes && (
         <CardGroup
           cards={recipes.map((recipe) => {

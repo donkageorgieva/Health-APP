@@ -6,7 +6,7 @@ const Nav = (props) => {
   const navbarLinks = props.navLinks.map((link) => {
     return (
       <li className="nav-item" key={link.name + link.to}>
-        <NavLink to={link.to} className="nav-link">
+        <NavLink to={link.to} exact className="nav-link">
           {link.name}
         </NavLink>
       </li>

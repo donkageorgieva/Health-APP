@@ -15,7 +15,7 @@ const CaloriesLayout = () => {
   const calories = useSelector((state) => state.health.calories);
   const [modalConfig, setModalConfig] = useState({
     show: false,
-    base: "recipes/",
+    base: "/recipes/",
     optional: " ",
     title: "Diet Preferences",
     name: "Show Recipes",

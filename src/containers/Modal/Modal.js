@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BadgeGroup from "../../components/BadgeGroup/BadgeGroup";
 
 const Modal = (props) => {
+  console.log(props.to.link, "link");
   return (
     <React.Fragment>
       <div
