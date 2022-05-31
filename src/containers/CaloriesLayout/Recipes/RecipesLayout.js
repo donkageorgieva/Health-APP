@@ -26,13 +26,17 @@ const Recipes = (props) => {
             if (recipe !== undefined) {
               return {
                 img: recipe.image,
-                subtitle:
-                  ((recipe.calories / recipe.weight) * 100).toFixed(2) +
-                  ` kcal per serving (${recipe.mealType})`,
+                subtitle: recipe.mealType,
                 list: recipe.ingredientLines,
-                cardTitle: recipe.label,
+                cardTitle: recipe.label.trim(" "),
                 width: "15rem",
                 listName: "Ingredients",
+                cardParagraph: "Calories:",
+                strongLast: ` ${(
+                  (recipe.calories / recipe.weight) *
+                  100
+                ).toFixed(2)}
+                 kcal/serving `,
               };
             }
           })}
