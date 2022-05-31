@@ -19,20 +19,24 @@ const Card = (props) => {
           {props.afterStrong && props.afterStrong}
         </p>
 
-        {props.list && (
+        {props.lists && (
           <Accordion>
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>{props.listName}</Accordion.Header>
-              <Accordion.Body>
-                <ul class="list-group list-group-flush">
-                  {props.list.map((item) => (
-                    <li class="list-group-item px-0 py-2">
-                      {item[0].toUpperCase() + item.split(1)}
-                    </li>
-                  ))}
-                </ul>
-              </Accordion.Body>
-            </Accordion.Item>
+            {props.lists.map((list) => {
+              return (
+                <Accordion.Item eventKey="0" key={list.name}>
+                  <Accordion.Header>{list.name}</Accordion.Header>
+                  <Accordion.Body>
+                    <ul className="list-group list-group-flush">
+                      {list.list.map((item) => (
+                        <li className="list-group-item px-0 py-2" key={item}>
+                          {item[0].toUpperCase() + item.split(1)}
+                        </li>
+                      ))}
+                    </ul>
+                  </Accordion.Body>
+                </Accordion.Item>
+              );
+            })}
           </Accordion>
         )}
         {props.button && (

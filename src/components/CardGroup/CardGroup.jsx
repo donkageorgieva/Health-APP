@@ -13,9 +13,8 @@ const CardGroup = (props) => {
       afterStrong={card.afterStrong}
       button={card.button && card.button}
       width={props.width}
-      list={card.list && card.list}
-      listName={card.list && card.listName}
       subtitle={card.subtitle && card.subtitle}
+      lists={card.lists && card.lists}
     />
   ));
   return (

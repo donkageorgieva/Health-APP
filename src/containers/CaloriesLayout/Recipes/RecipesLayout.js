@@ -27,10 +27,15 @@ const Recipes = (props) => {
               return {
                 img: recipe.image,
                 subtitle: recipe.mealType,
-                list: recipe.ingredientLines,
+                lists: [
+                  {
+                    name: "Ingredients",
+                    list: recipe.ingredientLines,
+                  },
+                ],
                 cardTitle: recipe.label.trim(" "),
                 width: "15rem",
-                listName: "Ingredients",
+
                 cardParagraph: "Calories:",
                 strongLast: ` ${(
                   (recipe.calories / recipe.weight) *
