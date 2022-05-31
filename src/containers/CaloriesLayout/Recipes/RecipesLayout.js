@@ -15,6 +15,7 @@ const Recipes = (props) => {
         health: params.health,
       })
     );
+    console.log(recipes, "recipes");
   }, [dispatch, params.calories, params.health]);
 
   return (

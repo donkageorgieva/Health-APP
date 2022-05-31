@@ -21,14 +21,17 @@ const Card = (props) => {
 
         {props.lists && (
           <Accordion>
-            {props.lists.map((list) => {
+            {props.lists.map((list, index) => {
               return (
-                <Accordion.Item eventKey="0" key={list.name}>
+                <Accordion.Item eventKey={index} key={list.name}>
                   <Accordion.Header>{list.name}</Accordion.Header>
                   <Accordion.Body>
                     <ul className="list-group list-group-flush">
-                      {list.list.map((item) => (
-                        <li className="list-group-item px-0 py-2" key={item}>
+                      {list.list.map((item, i) => (
+                        <li
+                          className="list-group-item px-0 py-2"
+                          key={i + item + Math.random()}
+                        >
                           {item[0].toUpperCase() + item.split(1)}
                         </li>
                       ))}
