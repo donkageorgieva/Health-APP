@@ -26,7 +26,6 @@ const Nav = (props) => {
             aria-label="Toggle navigation"
             onClick={(e) => {
               setShowMenu(!showMenu);
-              console.log("setting menu", showMenu);
             }}
           >
             <span className="navbar-toggler-icon" />

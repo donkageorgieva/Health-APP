@@ -32,7 +32,7 @@ const Card = (props) => {
                           className="list-group-item px-0 py-2"
                           key={i + item + Math.random()}
                         >
-                          {item[0].toUpperCase() + item.split(1)}
+                          {item}
                         </li>
                       ))}
                     </ul>

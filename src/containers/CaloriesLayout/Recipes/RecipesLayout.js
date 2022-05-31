@@ -15,7 +15,6 @@ const Recipes = (props) => {
         health: params.health,
       })
     );
-    console.log(recipes, "recipes");
   }, [dispatch, params.calories, params.health]);
 
   return (
@@ -32,6 +31,13 @@ const Recipes = (props) => {
                   {
                     name: "Ingredients",
                     list: recipe.ingredientLines,
+                  },
+                  {
+                    name: "Nutrients",
+                    list: recipe.nutrients.map(
+                      (nutrient) =>
+                        `${nutrient.label}: ${nutrient.quantity.toFixed(2)}g`
+                    ),
                   },
                 ],
                 cardTitle: recipe.label.trim(" "),

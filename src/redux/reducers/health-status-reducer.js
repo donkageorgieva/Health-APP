@@ -105,6 +105,10 @@ const healthSlice = createSlice({
     [fetchRecipes.fulfilled]: (state, action) => {
       state.nutrition.isLoading = false;
       state.nutrition.recipes = action.payload.hits.map((hit) => {
+        let nutrients = [];
+        for (const key in hit.recipe.totalDaily) {
+          nutrients.push(hit.recipe.totalDaily[key]);
+        }
         return {
           calories: hit.recipe.calories,
           healthLabels: hit.recipe.healthLabels,
@@ -112,6 +116,7 @@ const healthSlice = createSlice({
           ingredientLines: hit.recipe.ingredientLines,
           ingredients: hit.recipe.ingredients,
           mealType: hit.recipe.mealType,
+          nutrients: nutrients,
           label: hit.recipe.label,
           image: hit.recipe.images.LARGE
             ? hit.recipe.images.LARGE.url
